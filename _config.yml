@@ -1,0 +1,42 @@
+contact: arc-teaching@ucl.ac.uk
+
+title: "Research Software Engineering Summer School"
+includeleftnav: True
+short:
+
+defaults:
+  - scope: {path: ""}
+    values: {layout: default}
+
+baseurl: /rsd-summerschool
+
+remote_theme: dpshelio/indigo-jekyll
+
+crumbs:
+  - link: https://www.ucl.ac.uk/arc
+    text: Advanced Research Computing
+  - link: https://www.ucl.ac.uk/advanced-research-computing/education/training
+    text: Training
+
+kramdown:
+  hard_wrap: false
+
+plugins:
+  - jekyll-remote-theme
+
+include: # NOTE: This is not a path, but the directories name, wherever they are
+  - _static
+  - _modules
+
+exclude:
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - "*/*.nbconvert.ipynb"
+  - "*/*.v2.ipynb"
+  - "combined_files"
+  - "combined.ipynb"
+  - jupyter-lite
+
+keep_files:
+  - jupyter-lite

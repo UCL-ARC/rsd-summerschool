@@ -1,0 +1,7 @@
+bar:
+  eggs: null
+  spam: 3.4
+foo:
+- value
+- 1
+- true
