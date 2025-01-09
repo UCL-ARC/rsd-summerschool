@@ -45,6 +45,7 @@ TODO
 <li>Rebasing and Merging</li>
 <li>Debugging with GitBisect</li>
 <li>Forks, Pull Requests and the GitHub Flow</li>
+<li>* Virtual Environments</li>
 </ul>
    </td>
    <td>

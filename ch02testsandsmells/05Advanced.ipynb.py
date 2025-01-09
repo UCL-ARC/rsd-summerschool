@@ -321,8 +321,40 @@ mypy static_types_example.py --warn-unreachable
 # [pre-commit.ci](https://pre-commit.ci).
 
 # %% [markdown]
-# ## Hypothesis
-
-
-# %% [markdown]
-# ## Mutation
+# ## Property based testing
+# Property-based testing is a testing method that automatically generates
+# and tests a wide range of inputs, often missed by tests written by humans.
+# 
+# [Hypthesis](https://hypothesis.readthedocs.io/en/latest/) is a modern
+# property based testing implementation for Python. The library creates unit
+# tests. In a nutshell, Hypothesis can parametrize test, running test function
+# over a wide range of matching data from a "search strategy" established by
+# the library. Through paratemerization, Hypothesis can catch bugs which might
+# go unnoticed by writing manual inputs for the tests.
+# 
+# Property based testing is being adopted by software written in various
+# languages, especially by industries, to ensure the effectiveness of the
+# tests written for their software suite.
+# 
+# ## Mutation testing
+# 
+# Mutation testing checks the effectiveness of your tests by making minor
+# modification to the codebase and running the test suite. The tests were
+# not specific or good enough if they pass with the modifications made by
+# the mutation testing framework.
+# 
+# [mutmut](https://mutmut.readthedocs.io/en/latest/) is a mutation testing
+# library for Python which is being adopted recently in testing frameworks
+# of large projects. There exists other libraries that perform a similar task
+# such as -
+# - [pytest-testmon](https://github.com/tarpas/pytest-testmon): pytest plug-in
+#   which automatically selects and re-executes only tests affected by recent
+#   changes
+# - [MutPy](https://github.com/mutpy/mutpy) (unmaintained): mutation testing
+#   tool for Python 3.3+ source code
+# - [Cosmic Ray](https://cosmic-ray.readthedocs.io/en/latest/): mutation testing
+#   for Python
+# 
+# Overall, mutation testing is a very powerful way to check is your tests are
+# actually working, and this form of testing is beneficial for projects with
+# a large test suite.
