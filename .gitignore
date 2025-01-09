@@ -24,6 +24,8 @@ ch02*/maze*
 ch02*/*csv
 ch02*/*png
 ch02*/greengraph
+ch02*/test_static_types_example.py
+ch02*/static_types_example.py
 ch03*/DiffusionExample
 ch03*/commands
 ch03*/diffusion

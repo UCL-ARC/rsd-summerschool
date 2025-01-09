@@ -5,7 +5,7 @@ title: Testing and Code Smells
 * Why test?
 * Unit testing and regression testing
 * Negative testing
-* Mocking
+* Advanced Testing Techniques
+* Debugging
 * Continuous Integration
-* Comments
 * Coding conventions

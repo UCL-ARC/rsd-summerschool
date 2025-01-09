@@ -1,26 +1,37 @@
 ---
-title: Research Software Engineering with Python
+title: Research Software Engineering Summer School
 layout: default
 ---
 
 ## Introduction
 
-In this course, you will move beyond programming, to learn how to construct reliable, readable,
+In this summer school, you will move beyond programming, to learn how to construct reliable, readable,
 efficient research software in a collaborative environment. The emphasis is on practical techniques,
 tips, and technologies to effectively build and maintain complex code.
-This is a intensive, practical course.
+This is an intensive and a practical summer school.
 
 ## Pre-requisites
 
-* You need to have taken a formal course in at least one programming language, including variables, control flow, and functions. This could be a semester-long course, or a shorter workshop like Software Carpentry.
-* You are required to bring your own laptop.
-We have also provided [setup](session99) instructions for you to install the software needed for the course on
-your computer.
-* Eligibility: This course is for UCL post-graduate students.
+* You need to be competent in at least one programming language, including concepts like variables, control flow, and functions. This could be through a formal course, a shorter workshop like Software Carpentry, or previous experiences.
+
+* You need to be familiar with the basics of Git and GitHub. A good resource for attendees who are not familiar with Git and GitHub -
+  * First 8 chapters of ["Version Control with Git by Software Carpentry"](https://swcarpentry.github.io/git-novice/)
+
+* You need to be familiar with the foundational libraries of PyData and Scientific Python ecosystem. A good resource for attendees who are not familiar with the Scientific Python ecosystem -
+   * [Scientific Python Lectures](https://lectures.scientific-python.org)
+      * [1.1. Python scientific computing ecosystem](https://lectures.scientific-python.org/intro/intro.html)
+      * [1.2. The Python language](https://lectures.scientific-python.org/intro/language/python_language.html)
+      * [1.3.1. The NumPy array object](https://lectures.scientific-python.org/intro/numpy/array_object.html)
+      * [1.3.2. Numerical operations on arrays](https://lectures.scientific-python.org/intro/numpy/operations.html)
+      * [1.4. Matplotlib: plotting](https://lectures.scientific-python.org/intro/matplotlib/index.html)
+      * [1.6. Getting help and finding documentation](https://lectures.scientific-python.org/intro/help/help.html)
+   
+   If curious, one can also go through the remaining of the [1.3. NumPy: creating and manipulating numerical data](https://lectures.scientific-python.org/intro/numpy/index.html) section and [1.5. SciPy : high-level scientific computing](https://lectures.scientific-python.org/intro/scipy/index.html).
+* You are required to bring your own laptop. We have also provided [setup](session99) instructions for you to install the software needed for the course on your computer.
 
 ## Registration
 
-Members of doctoral training schools, or Masters courses who offer this module as part of their programme should register through their course organisers.
+TODO
 
 ## Synopsis
 
@@ -28,12 +39,8 @@ Members of doctoral training schools, or Masters courses who offer this module a
  <tbody>
   <tr>
    <td>
-<h3>Version Control</h3>
+<h3>Day 1: Version Control</h3>
 <ul>
-<li>Why use version control</li>
-<li>Solo use of version control</li>
-<li>Publishing your code to GitHub</li>
-<li>Collaborating with others through Git</li>
 <li>Branching</li>
 <li>Rebasing and Merging</li>
 <li>Debugging with GitBisect</li>
@@ -41,82 +48,49 @@ Members of doctoral training schools, or Masters courses who offer this module a
 </ul>
    </td>
    <td>
-<h3>Introduction to Python</h3>
-<ul>
-<li>Why use scripting languages?</li>
-<li>Python. IPython and the Jupyter notebook.</li>
-<li>Data structures: list, dictionaries, and sets. </li>
-<li>List comprehensions</li>
-<li>Functions in Python</li>
-<li>Modules in Python</li>
-<li>An introduction to classes</li>
-</ul>
-   </td>
-  </tr>
-  <tr>
-   <td>
-<h3>Research Data in Python</h3>
+<h3>Day 2: Research Data and Design Patterns in Python</h3>
 <ul>
 <li>Working with files on the disk</li>
 <li>Interacting with the internet</li>
 <li>JSON and YAML</li>
-<li>Plotting with Matplotlib</li>
-<li>Animations with Matplotlib</li>
-</ul>
-   </td>
-<td>
-<h3>Testing your code</h3>
-<ul>
-<li>Why test?</li>
-<li>Unit testing and regression testing</li>
-<li>Negative testing</li>
-<li>Mocking</li>
-<li>Debugging</li>
-<li>Continuous Integration</li>
-</ul>
-   </td>
-  </tr>
-  <tr>
-   <td>
-<h3>Software Projects</h3>
-<ul>
-<li>Turning your code into a package</li>
-<li>Releasing code</li>
-<li>Choosing an open-source license</li>
-<li>Software project management</li>
-<li>Organising issues and tasks</li>
-</ul>
-   </td>
-   <td>
-<h3>Construction and Design</h3>
-<ul>
-<li>Coding conventions</li>
-<li>Comments</li>
+<li>Other Scientific Data Formats</li>
 <li>Refactoring</li>
-<li>Documentation</li>
 <li>Object Orientation</li>
 <li>Design Patterns</li>
 </ul>
    </td>
   </tr>
   <tr>
-   <td>
-<h3>Advanced Programming Techniques</h3>
+<td>
+<h3>Day 3: Testing and Code Smell</h3>
 <ul>
-<li>Functional programming</li>
-<li>Metaprogramming</li>
-<li>Duck typing and exceptions</li>
-<li>Operator overloading</li>
-<li>Iterators and Generators</li>
+<li>Why test?</li>
+<li>Unit testing and regression testing</li>
+<li>Negative testing</li>
+<li>Advanced Testing Techniques</li>
+<li>Debugging</li>
+<li>Continuous Integration</li>
+<li>Coding conventions</li>
 </ul>
    </td>
    <td>
-<h3>Programming for Speed</h3>
+<h3>Day 4: Packaging and Documenting Software Projects</h3>
+<ul>
+<li>Turning your code into a package</li>
+<li>Releasing code</li>
+<li>Documentation</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>
+<h3>Day 5: Programming for Speed</h3>
 <ul>
 <li>Optimisation</li>
 <li>Profiling</li>
 <li>Scaling laws</li>
 <li>NumPy</li>
+<li>Miscellaneous libraries</li>
 <li>Cython</li>
  </ul>
    </td>
@@ -127,13 +101,10 @@ Members of doctoral training schools, or Masters courses who offer this module a
 ### Exercises
 
 Examples and exercises for this course will be provided in Python.
-Python will be introduced during this course, but we will assume you can already
-program. That means that you may find supplementary python content useful.
+Python will not be introduced during this course, and we will assume you can already
+program in Python. That means that you may find supplementary python content useful.
 
 
 ## Versions
 
 You can find the course notes as HTML via the navigation bar to the left.
-
-<!-- The [notes](notes.pdf) are also available in a printable pdf format. -->
-<!-- (**temporarily unavailable!**) -->

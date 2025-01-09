@@ -12,7 +12,7 @@ Linux users should be able to use their package manager to install all of this s
 using Linux, we assume you won't have any trouble with these requirements).
 
 However note that if you are running an older Linux distribution you may get older versions with
-different look and features.  A recent Linux distribution is recommended.
+different look and features. A recent Linux distribution is recommended.
 
 Python via package manager
 --------------------------
