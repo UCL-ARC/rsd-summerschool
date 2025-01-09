@@ -129,8 +129,7 @@ print(f"loaded_data = {loaded_data}")
 
 # %% [markdown]
 # ## YAML
-
-# %% [markdown]
+# 
 # YAML ([originally short for *Yet Another Markup Language*](https://en.wikipedia.org/wiki/YAML#History_and_name)) is another structured data format with many similarities to JSON; in fact [recent versions of YAML are a superset of JSON](https://en.wikipedia.org/wiki/YAML#Comparison_with_JSON). As well as supporting the same types and syntax as JSON, YAML also several additional features which can allow more readable formatting of data, for example
 #
 #   * Similar to Python, whitespace indentation can be used to denote nested structures rather than using explicit delimiters. 
@@ -184,19 +183,15 @@ print(f"type(loaded_data['foo']) = {type(loaded_data['foo']).__name__}")
 
 # %% [markdown]
 # YAML is a very versatile format for ad-hoc data files, however, as YAML encoding / decoding is not part of the Python standard library, JSON is sometimes preferred for its increased ease of use and universality.
-
-# %% [markdown]
+# 
 # ## XML
-
-# %% [markdown]
+# 
 # *Supplementary material* 
 #
 # [*Extensible Markup Language* (XML)](http://www.w3schools.com/xml/) is another popular format for storing hierarchical data structures. XML is very general and flexible, but is also very verbose which can hinder the human readability of XML encoded data and lead to large file sizes. In some scientific fields, XML based formats for data storage are very common. If you want to read and write XML formatted data in Python, a collection of tools for processing XML are available in the standard library within the [XML package](https://docs.python.org/3/library/xml.html).
-
-# %% [markdown]
+# 
 # ## Exercise: saving and loading a maze
-
-# %% [markdown]
+# 
 # Use YAML or JSON to save to disk, and to load it again, the maze data structure you designed in the previous *A Maze Model* exercise or the example solution below if you do not have a solution to hand.
 
 # %%

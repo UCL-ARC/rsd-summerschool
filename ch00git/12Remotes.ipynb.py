@@ -91,7 +91,7 @@ Mountains In the Pennines
 # %% [markdown]
 # ## Hosting Servers
 #
-# ## Hosting a local server
+# ### Hosting a local server
 #
 # * Any repository can be a remote for pulls
 # * Can pull/push over shared folders or ssh
@@ -123,7 +123,7 @@ os.chdir(working_dir)
 # If you have a colleague on a shared file system, you can use this approach to collaborate through that file system.
 
 # %% [markdown]
-# ## Home-made SSH servers
+# ### Home-made SSH servers
 #
 # Classroom exercise: Try creating a server for yourself using a machine you can SSH to:
 

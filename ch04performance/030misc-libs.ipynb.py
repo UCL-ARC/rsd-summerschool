@@ -146,8 +146,7 @@ jit_f(data)  # just run
 # than the NumPy implementation. NumPy is still good for relatively simple
 # computations, but as the complexity increases, Numba functions start
 # outperforming NumPy implementations.
-
-# %% [markdown]
+# 
 # Let's go back to our plain Python mandelbrot code from the previous lessons and
 # JIT compile it -
 
@@ -188,8 +187,7 @@ data = [[mandel1(complex(x, y)) for x in xs] for y in ys]  # just run
 # necessary the compiled code will perform better than NumPy code, but it usually
 # gives performance gains for signifantly large computations. As always, it is
 # good to measure the performance to check if there are any gains.
-
-# %% [markdown]
+# 
 # Let's try JITting our NumPy code.
 
 # %%
@@ -222,8 +220,7 @@ mandel_numpy(values)
 # of Python loops and lists than with NumPy functions. Moreover, Numba only understands
 # a subset of Python and NumPy so it is possible that a NumPy snippet does not
 # work but a simplified Python loop does.
-
-# %% [markdown]
+# 
 # Let's make minor adjustments to fix the NumPy implementation and measure its
 # performance. We flatten the NumPy arrays and consider only the real part
 # while performing the comparison.
@@ -255,14 +252,12 @@ mandel_numpy(values)  # just run
 
 # %% [markdown]
 # The code performs similar to the plain Python example!
-
-# %% [markdown]
+# 
 # Numba also has functionalities to vectorize, parallelize, and strictly type check
 # the code. All of these functions boost the performance even further or helps
 # Numba to avoid falling back to the "object" mode (`nopython=False`). Refer
 # to [Numba's documentation](http://numba.pydata.org) for a complete list of features.
-
-# %% [markdown] 
+# 
 # #### Numba support in Scientific Python ecosystem
 # 
 # Most of the scientific libraries nowadays ship Numba support with them. For example,
@@ -367,7 +362,6 @@ new_df.compute()
 # %% [markdown] 
 # Similarly, one can peform such computations on arrays and selected Python data structures.
 # 
-
 # #### Dask support in Scientific Python ecosystem
 # 
 # Similar to the adoption of Numba in the scientific Python ecosystem, dask is being

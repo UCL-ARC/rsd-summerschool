@@ -13,23 +13,17 @@
 
 # %% [markdown]
 # # How to Test
-
-# %% [markdown]
+# 
 # ## Equivalence partitioning
-
-# %% [markdown]
+# 
 # Think hard about the different cases the code will run under: this is science, not coding!
-
-# %% [markdown]
+# 
 # We can't write a test for every possible input: this is an infinite amount of work.
-
-# %% [markdown]
+# 
 # We need to write tests to rule out different bugs. There's no need to separately test *equivalent* inputs. 
-
-# %% [markdown]
+# 
 # Let's look at an example of this question outside of coding:
-
-# %% [markdown]
+# 
 # * Research Project : Evolution of agricultural fields in Saskatchewan from aerial photography
 # * In silico translation  : Compute overlap of two rectangles
 
@@ -72,14 +66,11 @@ show_fields((1.,1.,4.,4.), (2.,2.,3.,3.))
 
 # %% [markdown]
 # Here, we can see that the area of overlap, is the same as the smaller field, with area 1.
-
-# %% [markdown]
+# 
 # We could now go ahead and write a subroutine to calculate that, and also write some test cases for our answer.
-
-# %% [markdown]
+# 
 # But first, let's just consider that question abstractly, what other cases, *not equivalent to this* might there be?
-
-# %% [markdown]
+# 
 # For example, this case, is still just a full overlap, and is sufficiently equivalent that it's not worth another test:
 
 # %%
@@ -113,14 +104,11 @@ show_fields((1.,1.,4.,4.),(2.5,4,3.5,4.5)) # Just touching from outside
 # %%
 show_fields((1.,1.,4.,4.),(4,4,4.5,4.5)) # Touching corner
 
-
 # %% [markdown]
 # ## Using our tests
-
-# %% [markdown]
+# 
 # OK, so how might our tests be useful?
-
-# %% [markdown]
+# 
 # Here's some code that **might** correctly calculate the area of overlap:
 
 # %%
@@ -138,8 +126,7 @@ def overlap(field1, field2):
 
 # %% [markdown]
 # So how do we check our code?
-
-# %% [markdown]
+# 
 # The manual approach would be to look at some cases, and, once, run it and check:
 
 # %%
@@ -147,8 +134,7 @@ overlap((1.,1.,4.,4.),(2.,2.,3.,3.))
 
 # %% [markdown]
 # That looks OK.
-
-# %% [markdown]
+# 
 # But we can do better, we can write code which **raises an error** if it gets an unexpected answer:
 
 # %%
@@ -171,8 +157,7 @@ show_fields((1.,1.,4.,4.),(4.5,4.5,5,5))
 
 # %% [markdown]
 # What? Why is this wrong?
-
-# %% [markdown]
+# 
 # In our calculation, we are actually getting:
 
 # %%
@@ -181,14 +166,11 @@ overlap_right = 4
 overlap_width = -0.5
 overlap_height = -0.5
 
-
 # %% [markdown]
 # Both width and height are negative, resulting in a positive area.
 # The above code didn't take into account the non-overlap correctly.
-
-# %% [markdown]
+# 
 # It should be:
-#     
 
 # %%
 def overlap(field1, field2):
@@ -217,11 +199,9 @@ assert overlap((1,1,4,4), (4,4,4.5,4.5)) == 0.0
 
 # %% [markdown]
 # Note, we reran our other tests, to check our fix didn't break something else. (We call that "fallout")
-
-# %% [markdown]
+# 
 # ## Boundary cases
-
-# %% [markdown]
+# 
 # "Boundary cases" are an important area to test:
 #
 # * Limit between two equivalence classes: edge and corner sharing fields
@@ -237,8 +217,7 @@ assert overlap((1,1,4,4), (4,4,4.5,4.5)) == 0.0
 # %% [markdown]
 # * What happens if ``atoms`` is an empty list?
 # * What happens when a matrix/data-frame reaches one row, or one column?
-
-# %% [markdown]
+# 
 # ## Positive *and* negative tests
 #
 # * **Positive tests**: code should give correct answer with various inputs
@@ -249,11 +228,9 @@ assert overlap((1,1,4,4), (4,4,4.5,4.5)) == 0.0
 #
 # <div class="fragment roll-in">
 # Testing should ensure that explicit failures do indeed happen.
-
-# %% [markdown]
+# 
 # ## Raising exceptions
-
-# %% [markdown]
+# 
 # In Python, we can signal an error state by raising an error:
 
 # %% attributes={"classes": [" python"], "id": ""}
@@ -264,7 +241,6 @@ def I_only_accept_positive_numbers(number):
 
     # Do something
 
-
 # %%
 I_only_accept_positive_numbers(5)
 
@@ -273,8 +249,7 @@ I_only_accept_positive_numbers(-5)
 
 # %% [markdown]
 # There are standard "Exception" types, like `ValueError` we can `raise`
-
-# %% [markdown]
+# 
 # We would like to be able to write tests like this:
 
 # %%

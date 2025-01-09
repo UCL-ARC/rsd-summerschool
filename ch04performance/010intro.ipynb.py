@@ -13,27 +13,20 @@
 
 # %% [markdown]
 # # Performance programming
-
-# %% [markdown]
+# 
 # We've spent most of this course looking at how to make code readable and reliable. For research work, it is often also important that code is efficient: that it does what it needs to do *quickly*.
-
-# %% [markdown]
+# 
 # It is very hard to work out beforehand whether code will be efficient or not: it is essential to *Profile* code, to measure its performance, to determine what aspects of it are slow.
-
-# %% [markdown]
+# 
 # When we looked at Functional programming, we claimed that code which is conceptualised in terms of actions on whole data-sets rather than individual elements is more efficient. Let's measure the performance of some different ways of implementing some code and see how they perform.
-
-# %% [markdown]
+# 
 # ## Two Mandelbrots
-
-# %% [markdown]
+# 
 # You're probably familiar with a famous fractal called the [Mandelbrot Set](https://www.youtube.com/watch?v=ZDU40eUcTj0).
-
-# %% [markdown]
+# 
 # For a complex number $c$, $c$ is in the Mandelbrot set if the series $z_{i+1}=z_{i}^2+c$ (With $z_0=c$) stays close to $0$.
 # Traditionally, we plot a color showing how many steps are needed for $\left|z_i\right|>2$, whereupon we are sure the series will diverge.
-
-# %% [markdown]
+# 
 # Here's a trivial python implementation:
 
 # %%
@@ -90,7 +83,6 @@ def mandel_numpy(position,limit=50):
         value[diverging] = 2
         
     return diverged_at_count
-
 
 # %%
 ymatrix, xmatrix = np.mgrid[ymin:ymax:ystep, xmin:xmax:xstep]

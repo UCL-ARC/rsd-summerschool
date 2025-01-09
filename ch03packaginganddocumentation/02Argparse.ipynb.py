@@ -13,11 +13,9 @@
 
 # %% [markdown]
 # # Argparse
-
-# %% [markdown]
+# 
 # This is the standard library for building programs with a command-line interface. Here we show a short introduction to it, but we recommend to read the [official tutorial](https://docs.python.org/3/howto/argparse.html).
-
-# %% [markdown]
+# 
 # Let's start by creating a simple `greet` function that accepts some parameters.
 
 # %%
@@ -28,7 +26,6 @@ def greet(personal, family, title="", polite=False):
 
     greeting += f"{personal} {family}."
     return greeting
-
 
 # %% [markdown]
 # Now we have a function that greets whoever we want.
@@ -68,8 +65,7 @@ if __name__ == "__main__":
 
 # %% [markdown]
 # Note that we've created arguments for each argument `greet` accepts and kept what's optional in the function (the keyword arguments) to be also optional for its command-line interface (can you spot how?).
-
-# %% [markdown]
+# 
 # We need to tell the computer that this file can be executed to be able to run this script without calling it with `python` everytime. The computer will know what to use by reading the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) `#!`. If you are using MacOS or Linux, you do the following to create an executable:
 
 # %% language="bash"
@@ -103,8 +99,7 @@ if __name__ == "__main__":
 
 # %% [markdown]
 # Yes, [he is](https://en.wikipedia.org/wiki/John_Cleese#Honours_and_tributes)!
-
-# %% [markdown]
+# 
 # From the error we got above when we called `greeter.py` without arguments, you may have noticed that in the usage message there's also a `-h` optional argument. We know it's optional because it's shown within square brackes, like for `[--polite]`. This new argument, as the usage message seen above, is generated automatically by argparse and you can use it to see the help.
 
 # %% language="bash"

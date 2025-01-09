@@ -56,7 +56,7 @@
 # Collaborators need to go to the leader's GitHub profile and find the repository we created for that lesson. Mine is in https://github.com/jamespjh/github-example
 
 # %% [markdown]
-# #### 1. Fork repository
+# ### 1. Fork repository
 #
 # You will see on the top right of the page a `Fork` button with an accompanying number indicating how many GitHub users have forked that repository. 
 #
@@ -65,7 +65,7 @@
 # Collaborators: note how GitHub has redirected you to your own GitHub page and you are now looking at an exact copy of the team leader's repository.
 
 # %% [markdown]
-# #### 2. Clone your forked repo
+# ### 2. Clone your forked repo
 #
 # Collaborators: go to your terminal and clone the newly created fork.
 #
@@ -74,7 +74,7 @@
 # ```
 
 # %% [markdown]
-# #### 3. Create a feature branch
+# ### 3. Create a feature branch
 #
 # It's a good practice to create a new branch that'll contain the changes we want. We'll learn more about branches later on. For now, just think of this as a separate area where our changes will be kept not to interfere with other people's work.
 #
@@ -83,7 +83,7 @@
 # ```
 
 # %% [markdown]
-# #### 4. Make, commit and push changes to new branch
+# ### 4. Make, commit and push changes to new branch
 #
 # For example, let's create a new file called `SouthWest.md` and edit it to add this text:
 #
@@ -102,7 +102,7 @@
 # ```
 
 # %% [markdown]
-# #### 5. Create Pull Request
+# ### 5. Create Pull Request
 #
 # Go back to the collaborator's GitHub site and reload the fork. GitHub has noticed there is a new branch and is presenting us with a green button to `Compare & pull request`. Fantastic! Click that button.
 #
@@ -113,7 +113,7 @@
 # Now, the leader needs to go to their GitHub site. They have been notified there is a pull request in their repo awaiting revision. 
 
 # %% [markdown]
-# #### 6. Feedback from team leader
+# ### 6. Feedback from team leader
 #
 # Leaders can see the list of pull requests in the vertical menu of the repo, on the right hand side of the screen. Select the pull request the collaborator has done, and inspect the changes. 
 #
@@ -124,7 +124,7 @@
 # GitHub allows you to add a comment about that specific part of the change. Your collaborator has forgotten to add a title at the beginning of the file right before "Exmoor", so tell them so in the form presented after clicking the `+` button.
 
 # %% [markdown]
-# #### 7. Fixes by collaborator
+# ### 7. Fixes by collaborator
 #
 # Collaborators will be notified of this comment by email and also in their profiles page. Click the link accompanying  this notification to read the comment from the team leader. 
 #
@@ -149,7 +149,7 @@
 # This change will automatically be added to the pull request you started.
 
 # %% [markdown]
-# #### 8. Leader accepts pull request 
+# ### 8. Leader accepts pull request 
 # The team leader will be notified of the new changes that can be reviewed in the same fashion as earlier. 
 #
 # Let's assume the team leader is now happy with the changes.

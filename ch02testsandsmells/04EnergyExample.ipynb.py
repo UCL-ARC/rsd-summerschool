@@ -44,8 +44,7 @@ ax.set_xlabel("Position $i$")
 # %% [markdown]
 # Here, the total energy due to position 2 is $3 (3-1)=6$, and due to column 7 is $1 (1-1)=0$. We need to sum these to get the
 # total energy.
-
-# %% [markdown]
+# 
 # ## Starting point
 #
 # Create a Python module:
@@ -84,7 +83,6 @@ def test_energy():
     """ Optional description for reporting """
     # Test something
 
-
 # %% [markdown]
 # Invoke the tests:
 
@@ -94,8 +92,7 @@ def test_energy():
 
 # %% [markdown]
 # Now, write your code (in `model.py`), and tests (in `test_model.py`), testing as you do.
-
-# %% [markdown]
+# 
 # ## Solution
 #
 # Don't look until after you've tried!
@@ -131,7 +128,6 @@ def energy(density):
                          "array of positive integers.")
     
     return sum(density * (density - 1))
-
 
 # %%
 # %%writefile diffusion/test_model.py
@@ -201,7 +197,7 @@ def test_derivative_no_self_energy():
 # %% [markdown]
 # ## Coverage
 #
-# With py.test, you can use the ["pytest-cov" plugin](https://github.com/pytest-dev/pytest-cov) to measure test coverage
+# With pytest, you can use the ["pytest-cov" plugin](https://github.com/pytest-dev/pytest-cov) to measure test coverage
 
 # %% language="bash"
 # cd diffusion
@@ -216,5 +212,3 @@ def test_derivative_no_self_energy():
 
 # %% [markdown]
 # Look at the [coverage results](diffusion/htmlcov/index.html)
-
-# %%

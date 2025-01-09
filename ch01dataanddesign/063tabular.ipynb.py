@@ -15,11 +15,9 @@
 # # Field and Record Data (Tabular data)
 #
 # Tabular data, that is data that is formatted as a table with a fixed number of rows and columns, is very common in a research context. A particularly simple and also popular file format for such data is [_delimited-separated value_ files](https://en.wikipedia.org/wiki/Delimiter-separated_values).
-
-# %% [markdown]
+# 
 # ## Delimiter-separated values
-
-# %% [markdown]
+# 
 # Let's carry on with our sunspots example. As we saw previously the data is semicolon-separated. 
 #
 # We can request the CSV file text from the URL we used previously:
@@ -48,35 +46,26 @@ print(sunspots_csv_text.split('\n')[-5:])
 # * One *record* per line (row)
 # * Each record has multiple *fields* (columns)
 # * Fields are separated by some *delimiter*
-
-# %% [markdown]
+# 
 # Typical separators are the `space`, `tab`, `comma`, and `semicolon`, leading to correspondingly-named file formats, e.g.:
 #
 # * Space-separated value (e.g. `field1 "field two" field3` )
 # * Comma-separated value (e.g. `field1, another field, "wow, another field"`)
-
-# %% [markdown]
+# 
 # Comma-separated value is abbreviated CSV, and tab-separated value TSV.
-
-# %% [markdown]
+# 
 # CSV is also sometimes used to refer to all the different sub-kinds of separated value files, i.e. some people use CSV to refer to tab-, space- and semicolon-separated files.
-
-# %% [markdown]
+# 
 # CSV is not a particularly superb data format, because it forces your data model to only have two 'axes', records and fields, with each record a flat object. As we will see in the next notebook, structured file formats can be used to represent a richer array of data formats, including for example hierarchically structured data where each record may itself have an internal structure.
-
-# %% [markdown]
+# 
 # Nevertheless, because you can always export *spreadsheets* as CSV files (each cell is a field, each row is a record), CSV files are very popular. 
-
-# %% [markdown]
+# 
 # ### CSV variants
-
-# %% [markdown]
+# 
 # Some CSV formats define a comment character, so that rows beginning with, e.g., a `#`, are not treated as data, but give a human comment.
-
-# %% [markdown]
+# 
 # Some CSV formats define a three-deep list structure, where a double-newline separates records into blocks.
-
-# %% [markdown]
+# 
 # Some CSV formats assume that the first line (also called a header) defines the names of the fields, e.g.:
 #
 # ```
@@ -84,11 +73,9 @@ print(sunspots_csv_text.split('\n')[-5:])
 # James, 39
 # Will, 2
 # ```
-
-# %% [markdown]
+# 
 # ### Python `csv` module
-
-# %% [markdown]
+# 
 # The Python standard library provides a `csv` module for reading and writing delimited-separated value files, including, as the name suggests, CSV files. As it is built-in to all Python installations, it is useful to be familiar with the `csv` module as an option for loading and saving CSV formatted data, though the CSV capabilities in third-party libraries such as [NumPy](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html) (which we will cover later in the course) and [Pandas](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) are more powerful and will often be better options in practice.
 
 # %%
@@ -130,8 +117,7 @@ plt.ylabel('Monthly mean total sunspot number');
 
 # %% [markdown]
 # #### Reading rows as dictionaries
-
-# %% [markdown]
+# 
 # Accessing the values in each row by an index corresponding to their column can be unclear and prone to bugs. The `csv` module also provides the `csv.DictReader` class to allow reading each record (line) in the CSV file as a dictionary keyed by a set of field names. For the dataset we are using [we have the columns correspond to](http://www.sidc.be/silso/infosnmtot)
 #
 # ```
@@ -197,15 +183,12 @@ with open('planets_data.csv', 'w', encoding='utf-8') as f:
 
 # %% [markdown]
 # A [`csv.DictWriter`](https://docs.python.org/3/library/csv.html#csv.DictWriter) class is also provided which analogously to the  `csv.DictReader` class, allows writing a CSV file using rows specified by dictionaries mapping from field names to values.
-
-# %% [markdown]
+# 
 # ### NumPy's CSV readers
-
-# %% [markdown]
+# 
 # The Python standard library `csv` module seen in the preceding section is less powerful than the CSV capabilities in NumPy,
 # the main scientific Python library for handling data. NumPy is distributed with Anaconda and Canopy, so we recommend use that when available.
-
-# %% [markdown]
+# 
 # NumPy has powerful capabilities for handling matrices, and other fun stuff, and we'll learn about these later in the course,
 # but for now, we'll use NumPy's CSV reader, and assume it gives us lists and dictionaries, rather than its more exciting `array` type.
 
@@ -241,8 +224,7 @@ plt.plot(sunspots[:,2], sunspots[:,3]) # Numpy syntax to access all
 # %% [markdown]
 # The plot command accepted an array of 'X' values and an array of 'Y' values. We used a special NumPy "`:`" syntax,
 # which we'll learn more about later. Don't worry about the `%matplotlib` magic command for now - we'll also look at this later.
-
-# %% [markdown]
+# 
 # `genfromtxt` also allows naming the columns. Similarly of what we've done with the `csv.DictReader`. We do that by specifying the column information to the formatter:
 
 # %%
@@ -280,8 +262,7 @@ plt.plot(sunspots['year'], sunspots['mean'])
 
 # %% [markdown]
 # ### Pandas - a more powerful CSV reader
-
-# %% [markdown]
+# 
 # If most of your work is going to be working with CSV files, then, most probably you will enjoy the powers that [pandas](https://pandas.pydata.org/) provide. Whereas numpy uses arrays, pandas work with [DataFrames](https://pandas.pydata.org/pandas-docs/stable/getting_started/intro_tutorials/01_table_oriented.html), that's how they name to their representation of data in a table (2D arrays).
 #
 # Let's see how we would use it for this example.
@@ -310,6 +291,5 @@ sunspots.plot('year', 'mean')
 
 # %% [markdown]
 # Note how, automatically, pandas sets the axis labels and the legend. We will learn how to set these up later in this chapter.
-
-# %% [markdown]
+# 
 # You can learn more about pandas with the [Software carpentry's Plotting and Programming with Python](https://swcarpentry.github.io/python-novice-gapminder/) lesson.

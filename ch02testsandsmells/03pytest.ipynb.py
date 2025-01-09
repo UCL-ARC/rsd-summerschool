@@ -19,8 +19,7 @@
 # (jupyterlite) version of this notebook
 # 
 # ## Why use testing frameworks?
-
-# %% [markdown]
+# 
 # Frameworks should simplify our lives:
 #
 # * Should be easy to add simple test
@@ -33,11 +32,9 @@
 # * Run only some tests, e.g. ``test --only "tests about fields"``
 # * **Report failing tests**
 # * Additional goodies, such as code coverage
-
-# %% [markdown]
+# 
 # ## Common testing frameworks
-
-# %% [markdown]
+# 
 # * Language agnostic: [CTest](http://www.cmake.org/cmake/help/v2.8.12/ctest.html)
 #   * Test runner for executables, bash scripts, etc...
 #   * Great for legacy code hardening
@@ -71,13 +68,11 @@
 # * Fortran unit-tests:
 #     * [funit](https://rubygems.org/gems/funit),
 #     * [pfunit](http://sourceforge.net/projects/pfunit/)(works with MPI)
-
-# %% [markdown]
+# 
 # ## pytest framework: usage
 #
 # [pytest](https://docs.pytest.org/en/latest/) is a recommended python testing framework.
-
-# %% [markdown]
+# 
 # We can use its tools in the notebook for on-the-fly tests in the notebook. This, happily, includes the negative-tests example we were looking for a moment ago.
 
 # %%
@@ -88,14 +83,12 @@ def I_only_accept_positive_numbers(number):
 
     # Do something
 
-
 # %%
 from pytest import raises
 
 # %%
 with raises(ValueError):
     I_only_accept_positive_numbers(-5)
-
 
 # %% [markdown]
 # but the real power comes when we write a test file alongside our code files in our homemade packages:
@@ -120,7 +113,6 @@ def overlap(field1, field2):
     
     return overlap_height * overlap_width
 
-
 # %%
 # %%writefile saskatchewan/test_overlap.py
 from .overlap import overlap
@@ -134,41 +126,34 @@ def test_partial_overlap():
 def test_no_overlap():
     assert overlap((1,1,4,4), (4.5,4.5,5,5)) == 0.0
 
-
 # %% attributes={"classes": [" bash"], "id": ""} magic_args="--no-raise-error" language="bash"
 # cd saskatchewan
 # pytest
 
 # %% [markdown]
 # Note that it reported **which** test had failed, how many tests ran, and how many failed.
-
-# %% [markdown]
+# 
 # The symbol `..F` means there were three tests, of which the third one failed.
-
-# %% [markdown]
+# 
 # Pytest will:
 #
 # * automagically finds files ``test_*.py``
 # * collects all subroutines called ``test_*``
 # * runs tests and reports results
-
-# %% [markdown]
+# 
 # Some options:
 #
 # * help: `pytest --help`
 # * run only tests for a given feature: `pytest -k foo` # tests with 'foo' in the test name
-
-# %% [markdown]
+# 
 # ## Testing with floating points
 #
-# ## Floating points are not reals
-#
+# ### Floating points are not reals
 #
 # Floating points are inaccurate representations of real numbers:
 #
 # `1.0 == 0.99999999999999999` is true to the last bit.
-
-# %% [markdown]
+# 
 # This can lead to numerical errors during calculations: $1000 (a - b) \neq 1000a - 1000b$
 
 # %%
@@ -187,9 +172,8 @@ def test_no_overlap():
 
 # %% [markdown]
 # The result should be `2e-8`.
-
-# %% [markdown]
-# ## Comparing floating points
+# 
+# ### Comparing floating points
 #
 # Use the "approx", for a default of a relative tolerance of $10^{-6}$
 
@@ -208,7 +192,7 @@ assert 0.7 == approx(0.701 , rel=0.1, abs=0.1)
 # Choosing tolerances is a big area of [debate](https://software-carpentry.org/blog/2014/10/why-we-dont-teach-testing.html).
 
 # %% [markdown]
-# ## Comparing vectors of floating points
+# ### Comparing vectors of floating points
 #
 # Numerical vectors are best represented using [numpy](http://www.numpy.org/).
 

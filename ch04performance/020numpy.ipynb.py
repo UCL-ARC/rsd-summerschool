@@ -13,11 +13,9 @@
 
 # %% [markdown]
 # # NumPy for Performance
-
-# %% [markdown]
+# 
 # ## NumPy constructors
-
-# %% [markdown]
+# 
 # We saw previously that NumPy's core type is the `ndarray`, or N-Dimensional Array:
 
 # %%
@@ -85,8 +83,7 @@ print(values)
 
 # %% [markdown]
 # ## Arraywise Algorithms
-
-# %% [markdown]
+# 
 # We can use this to apply the mandelbrot algorithm to whole *ARRAYS*
 
 # %%
@@ -97,7 +94,6 @@ z3 = z2 * z2 + values
 
 # %%
 print(z3)
-
 
 # %% [markdown]
 # So can we just apply our `mandel1` function to the whole matrix?
@@ -118,8 +114,7 @@ mandel1(values)
 
 # %% [markdown]
 # No. The *logic* of our current routine would require stopping for some elements and not for others. 
-
-# %% [markdown]
+# 
 # We can ask numpy to **vectorise** our method for us:
 
 # %%
@@ -140,11 +135,9 @@ plt.imshow(data5, interpolation='none')
 # %%timeit
 data5 = mandel2(values)
 
-
 # %% [markdown]
 # This is not significantly faster. When we use *vectorize* it's just hiding an plain old python for loop under the hood. We want to make the loop over matrix elements take place in the "**C Layer**".
-
-# %% [markdown]
+# 
 # What if we just apply the Mandelbrot algorithm without checking for divergence until the end:
 
 # %%
@@ -161,7 +154,6 @@ def mandel_numpy_explode(position, limit=50):
 # %%
 data6 = mandel_numpy_explode(values)
 
-
 # %% [markdown]
 # OK, we need to prevent it from running off to $\infty$
 
@@ -176,7 +168,6 @@ def mandel_numpy(position, limit=50):
         value[diverging] = 2
         
     return abs(value) < 2
-
 
 # %%
 data6 = mandel_numpy(values)
@@ -193,8 +184,7 @@ plt.imshow(data6, interpolation='none')
 
 # %% [markdown]
 # Wow, that was TEN TIMES faster.
-
-# %% [markdown]
+# 
 # There's quite a few NumPy tricks there, let's remind ourselves of how they work:
 
 # %%
@@ -234,19 +224,14 @@ x[np.logical_not(z)]
 x[z] = 5
 x
 
-
 # %% [markdown]
 # Note that we didn't compare two arrays to get our logical array, but an array to a scalar integer -- this was broadcasting again.
-
-# %% [markdown]
+# 
 # ## More Mandelbrot
-
-# %% [markdown]
+# 
 # Of course, we didn't calculate the number-of-iterations-to-diverge, just whether the point was in the set.
-
-# %% [markdown]
+# 
 # Let's correct our code to do that:
-#
 
 # %%
 def mandel4(position,limit=50):
@@ -275,11 +260,9 @@ plt.imshow(data7, interpolation='none')
 
 data7 = mandel4(values)
 
-
 # %% [markdown]
 # Note that here, all the looping over mandelbrot steps was in Python, but everything below the loop-over-positions happened in C. The code was amazingly quick compared to pure Python.
-
-# %% [markdown]
+# 
 # Can we do better by avoiding a square root?
 
 # %%
@@ -304,11 +287,9 @@ data8 = mandel5(values)
 
 # %% [markdown]
 # Probably not worth the time I spent thinking about it!
-
-# %% [markdown]
+# 
 # ## NumPy Testing
-
-# %% [markdown]
+# 
 # Now, let's look at calculating those residuals, the differences between the different datasets.
 
 # %%
@@ -368,11 +349,9 @@ np.testing.assert_allclose(x, y, rtol=1e-6, atol=1e-20)
 # %%
 np.testing.assert_allclose(data7, data1)
 
-
 # %% [markdown]
 # ## Arraywise operations are fast
-
-# %% [markdown]
+# 
 # Note that we might worry that we carry on calculating the mandelbrot values for points that have already diverged.
 
 # %%
@@ -406,17 +385,13 @@ plt.imshow(data8, interpolation='none')
 
 # %% [markdown]
 # This was **not faster** even though it was **doing less work**
-
-# %% [markdown]
+# 
 # This often happens: on modern computers, **branches** (if statements, function calls) and **memory access** is usually the rate-determining step, not maths.
-
-# %% [markdown]
+# 
 # Complicating your logic to avoid calculations sometimes therefore slows you down. The only way to know is to **measure**
-
-# %% [markdown]
+# 
 # ## Indexing with arrays
-
-# %% [markdown]
+# 
 # We've been using Boolean arrays a lot to get access to some elements of an array. We can also do this with integers:
 
 # %%
@@ -472,8 +447,7 @@ z[...,2]
 
 # %% [markdown]
 # However, boolean mask indexing and array filter indexing always causes a copy.
-
-# %% [markdown]
+# 
 # Let's try again at avoiding doing unnecessary work by using new arrays containing the reduced data instead of a mask:
 
 # %%
@@ -511,11 +485,9 @@ data9 = mandel7(values)
 
 # %% [markdown]
 # Still slower. Probably due to lots of copies -- the point here is that you need to *experiment* to see which optimisations will work. Performance programming needs to be empirical.
-
-# %% [markdown]
+# 
 # ## Profiling
-
-# %% [markdown]
+# 
 # We've seen how to compare different functions by the time they take to run. However, we haven't obtained much information about where the code is spending more time. For that we need to use a profiler. IPython offers a profiler through the `%prun` magic. Let's use it to see how it works:
 
 # %%

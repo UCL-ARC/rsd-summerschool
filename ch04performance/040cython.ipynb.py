@@ -14,11 +14,9 @@
 # %% [markdown]
 # # Cython
 # Cython can be viewed as an extension of Python where variables and functions are annotated with extra information, in particular types. The resulting Cython source code will be compiled into optimized C or C++ code, and thereby yielding substantial speed-up of slow Python code. In other words, Cython provides a way of writing Python with comparable performance to that of C/C++.
-
-# %% [markdown]
+# 
 # ## Start Coding in Cython
-
-# %% [markdown]
+# 
 # Cython code must, unlike Python, be compiled. This happens in the following stages:
 #
 # * The cython code in `.pyx` file will be translated to a `C` file.
@@ -28,8 +26,7 @@
 #
 # For details, please see [Building Cython Code](http://docs.cython.org/src/quickstart/build.html).
 #
-
-# %% [markdown]
+# 
 # **Pure python Mandelbrot set:**
 
 # %%
@@ -90,12 +87,10 @@ axarr[1].set_title('Cython')
 
 # %% [markdown]
 # We have improved the performance of a factor of 1.5 by just using the Cython compiler, **without changing the code**!
-
-# %% [markdown]
+# 
 # ## Cython with C Types
 # But we can do better by telling Cython what C data type we would use in the code. Note we're not actually writing C, we're writing Python with C types.
-
-# %% [markdown]
+# 
 # _typed variable_
 
 # %% language="cython"

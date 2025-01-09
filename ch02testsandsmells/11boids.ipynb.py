@@ -13,26 +13,20 @@
 
 # %% [markdown]
 # # Exercise: Refactoring The Bad Boids
-
-# %% [markdown]
+# 
 # ## Bad_Boids
-
-# %% [markdown]
 #
 # We have written some _very bad_ code implementing our Boids flocking example.
 #
 # Here's the [Github link](https://github.com/UCL-ARC-RSEing-with-Python/bad-boids).
 #
 # Please fork it on GitHub, and clone your fork.
-#
-
-# %% [markdown]
+# 
 # ``` bash
 # git clone      git@github.com:yourname/bad-boids.git 
 # # OR git clone https://github.com/yourname/bad-boids.git
 # ```
-
-# %% [markdown]
+# 
 # For the Exercise, you should start from the GitHub repository, but here's our terrible code:
 
 # %%
@@ -96,17 +90,13 @@ anim = animation.FuncAnimation(figure, animate,
 
 # %% [markdown]
 # If you go into your folder and run the code:
-
-# %% [markdown]
+# 
 # ``` bash
 # cd bad_boids
 # python boids.py
 # ```
-
-# %% [markdown]
 #
 # You should be able to see some birds flying around, and then disappearing as they leave the window.
-#
 
 # %%
 from IPython.display import HTML
@@ -114,24 +104,16 @@ HTML(anim.to_jshtml())
 
 # %% [markdown]
 # ## Your Task
-
-# %% [markdown]
-#
+# 
 # Transform bad_boids **gradually** into better code, while making sure it still works, using a Refactoring approach.
-#
-
-# %% [markdown]
+# 
 # ## A regression test
-
-# %% [markdown]
-#
+# 
 # First, have a look at the regression test we made.
 #
 # To create it, we saved out the before and after state
 # for one iteration of some boids, using ipython:
-#
-
-# %% [markdown]
+# 
 # ``` python
 # import yaml
 # import boids
@@ -145,16 +127,11 @@ HTML(anim.to_jshtml())
 # fixture_file.write(yaml.dump(fixture))
 # fixture_file.close()
 # ```
-
-# %% [markdown]
+# 
 # ## Invoking the test
-
-# %% [markdown]
-#
+# 
 # Then, I used the fixture file to define the test:
 #
-
-# %% [markdown]
 # ``` python
 # from boids import update_boids
 # from nose.tools import assert_almost_equal
@@ -169,33 +146,23 @@ HTML(anim.to_jshtml())
 #         for after_value, before_value in zip(after, before): 
 #             assert_almost_equal(after_value, before_value, delta=0.01)
 # ```
-
-# %% [markdown]
+# 
 # ## Make the regression test fail
-
-# %% [markdown]
+# 
 # Check the tests pass:
-
-# %% [markdown]
+# 
 # ``` bash
 # pytest
 # ```
-
-# %% [markdown]
 #
 # Edit the file to make the test fail, see the fail, then reset it:
 #
-
-# %% [markdown]
 # ```
 # git checkout boids.py
 # ```
-
-# %% [markdown]
+# 
 # ## Start Refactoring
-
-# %% [markdown]
-#
+# 
 # Look at the code, consider the [list of refactorings](./05refactoring.html#refactoring-summary), and make changes.
 #
 # Each time, do a git commit on your fork, and write a commit message explaining the 

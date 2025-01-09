@@ -11,6 +11,9 @@
 #       jupytext_version: 1.15.2
 # ---
 
+# %% [markdown]
+# # Faster Mandelbrots?
+
 # %%
 xmin = -1.5
 ymin = -1.0
@@ -39,8 +42,7 @@ data1 = [[mandel1(complex(x, y)) for x in xs] for y in ys]
 
 # %% [markdown]
 # ## Many Mandelbrots
-
-# %% [markdown]
+# 
 # Let's compare our naive python implementation which used a list comprehension, taking 662ms, with the following:
 
 # %%
@@ -70,8 +72,7 @@ plt.imshow(data2, interpolation='none')
 
 # %% [markdown]
 # We ought to be checking if these results are the same by comparing the values in a test, rather than re-plotting. This is cumbersome in pure Python, but easy with NumPy, so we'll do this later.
-
-# %% [markdown]
+# 
 # Let's try a pre-allocated data structure:
 
 # %%
@@ -93,8 +94,7 @@ plt.imshow(data3, interpolation='none')
 
 # %% [markdown]
 # Nope, no gain there. 
-
-# %% [markdown]
+# 
 # Let's try using functional programming approaches:
 
 # %%
@@ -115,6 +115,5 @@ plt.imshow(data4, interpolation='none')
 
 # %% [markdown]
 # That was a tiny bit slower.
-
-# %% [markdown]
+# 
 # So, what do we learn from this? Our mental image of what code should be faster or slower is often wrong, or doesn't make much difference. The only way to really improve code performance is empirically, through measurements.

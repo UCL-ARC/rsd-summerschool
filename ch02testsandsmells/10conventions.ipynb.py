@@ -33,9 +33,6 @@ from context import (
 # ## One code, many layouts:
 #
 # Consider the following fragment of python:
-#
-#
-#
 
 # %%
 import species
@@ -44,13 +41,7 @@ def AddToReaction(name, reaction):
 
 
 # %% [markdown]
-#
-#
-#
 # this could also have been written:
-#
-#
-#
 
 # %%
 from species import Species
@@ -62,21 +53,12 @@ def add_to_reaction(a_name,
 
 
 # %% [markdown]
-#
-#
-#
-
-# %% [markdown]
 # ## So many choices
-
-# %% [markdown]
 #
 # * Layout
 # * Naming
 # * Syntax choices
 #
-
-# %% [markdown]
 # ## Layout
 
 # %%
@@ -84,12 +66,6 @@ reaction = {
     "reactants": ["H", "H", "O"],
     "products": ["H2O"]
 }
-
-# %% [markdown]
-#
-#
-#
-#
 
 # %%
 reaction2=(
@@ -107,23 +83,18 @@ reaction2=(
 }
 )
 
-
 # %% [markdown]
 # ## Layout choices
-
-# %% [markdown]
-#
+# 
 # * Brace style
 # * Line length
 # * Indentation
 # * Whitespace/Tabs
 #
 # Inconsistency will produce a mess in your code! Some choices will make your code harder to read, whereas others may affect the code. For example, if you copy/paste code with tabs in a place that's using spaces, they may appear OK in your screen but it will fail when running it.
-
-# %% [markdown]
+# 
 # ## Naming Conventions
-
-# %% [markdown]
+# 
 # [Camel case](https://en.wikipedia.org/wiki/Camel_case) is used in the following example, where class name is in UpperCamel, functions in lowerCamel and underscore_separation for variables names. This convention is used broadly in the python community.
 
 # %%
@@ -140,16 +111,10 @@ class class_name:
     def method_name(a_variable):
         m_instance_variable = a_variable
 
-
 # %% [markdown]
 # ## Hungarian Notation
-
-# %% [markdown]
-#
+# 
 # Prefix denotes *type*:
-#
-#
-#
 
 # %%
 fNumber = float(sEntry) + iOffset
@@ -164,19 +129,14 @@ number = float(entry) + offset
 
 # %% [markdown]
 # ## Newlines
-
-# %% [markdown]
 #
 # * Newlines make code easier to read
 # * Newlines make less code fit on a screen
 #
 # Use newlines to describe your code's *rhythm*.
-#
-
-# %% [markdown]
+# 
 # ## Syntax Choices
-
-# %% [markdown]
+# 
 # The following two snippets do the same, but the second is separated into more steps, making it more readable.
 
 # %%
@@ -193,21 +153,14 @@ if ((variable_equality and flag1) or flag2):
 # We create extra variables as an intermediate step. Don't worry about the performance now, the compiler will do the right thing.
 #
 # What about operator precedence? Being explicit helps to remind yourself what you are doing.
-
-# %% [markdown]
+# 
 # ## Syntax choices
-
-# %% [markdown]
 #
 # * Explicit operator precedence
 # * Compound expressions
 # * Package import choices
-#
-
-# %% [markdown]
+# 
 # ## Coding Conventions
-
-# %% [markdown]
 #
 # You should try to have an agreed policy for your team for these matters.
 #
@@ -218,11 +171,7 @@ if ((variable_equality and flag1) or flag2):
 # - **C++**: [Google's style guide](https://google.github.io/styleguide/cppguide.html), [Mozilla's](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style)
 # - **Julia**: [Official style guide](https://docs.julialang.org/en/v1/manual/style-guide/index.html)
 #
-
-# %% [markdown]
 # ## Lint
-
-# %% [markdown]
 #
 # There are automated tools which enforce coding conventions and check for common mistakes.
 #
@@ -231,9 +180,7 @@ if ((variable_equality and flag1) or flag2):
 #  - [pylint](https://www.pylint.org/): useful information about the quality of your code
 #  - [black](https://github.com/psf/black): code formatter written in Python
 #  - [ruff](https://github.com/astral-sh/ruff): blazing fast code formatter and linter written in Rust with ideas borrowed from Pythonic linters and formatters
-
-
-# %% [markdown]
+# 
 # Most of such tools can be directly used on Python files / repositories using a CLI utility. For instance -
 
 
@@ -250,9 +197,7 @@ if ((variable_equality and flag1) or flag2):
 # These linters can be configured to choose which points to flag and which to ignore.
 #
 # Do not blindly believe all these automated tools! Style guides are **guides** not **rules**.
-
-# %% [markdown]
-#
+# 
 # It is a good idea to run a linter before every commit, or include it in your CI tests.
 #
 # [`pre-commit`](https://pre-commit.com) allows developers to add tools like linters and formatters
@@ -265,9 +210,6 @@ if ((variable_equality and flag1) or flag2):
 # 
 # This would run the checks every time a commit is created locally. The checks will only run on the files
 # modified by that commit.
-
-
-# %% [markdown]
+# 
 # Finally, there are tools like [editorconfig](https://editorconfig.org/) to help sharing the conventions used within a project, where each contributor uses different IDEs and tools.
 # There are also bots like [pep8speaks](https://pep8speaks.com/) and [pre-commit.ci](https://pre-commit.ci) that comments/run checks on contributors' pull requests suggesting what to change to follow the conventions for the project.
-#

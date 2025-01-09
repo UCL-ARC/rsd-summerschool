@@ -13,8 +13,6 @@
 
 # %% [markdown]
 # # Packaging
-
-# %% [markdown]
 #
 # Once we've made a working program, we'd like to be able to share it with others.
 #
@@ -37,11 +35,8 @@
 # Finally, the packaging community regularly organises [PackagingCon](https://packaging-con.org) to discuss the packaging ecosystems
 # of multiple languages and operating systems at a single place.
 #
-
-# %% [markdown]
 # ## Distribution tools
-
-# %% [markdown]
+# 
 # Distribution tools allow one to obtain a working copy of someone else's package.
 # The package managers are usually CLI utilities that allow you to query inside
 # a repository of existing packages.
@@ -73,11 +68,7 @@
 # The difference between the package management tools and the package repositories is
 # similar to the difference between Git and GitHub.
 #
-
-# %% [markdown]
 # ## Laying out a project
-
-# %% [markdown]
 #
 # When planning to package a project for distribution, defining a suitable
 # project layout is essential. A typical scientific python compliant layout
@@ -104,11 +95,6 @@
 # └── pyproject.toml
 # ```
 #
-#
-#
-#
-
-# %% [markdown]
 # To achieve this for our `greetings.py` file from the previous session, we can use the commands shown below. We can start by making our directory structure. You can create many nested directories at once using the `-p` switch on `mkdir`.
 
 # %% language="bash"
@@ -124,13 +110,11 @@
 
 # %% [markdown]
 # ## Using pyproject.toml
-
-# %% [markdown]
+# 
 # Since June 2020, python's recommendation for creating a package is to specify package information in a `pyproject.toml` file.
 # Older projects used a `setup.py` or `setup.cfg` file instead - and in fact the new `pyproject.toml` file in many ways mirrors this old format.
 # A lot of projects and packages have not yet switched over from `setup.py` to `pyproject.toml`, so don't be surprised to see a mixture of the two formats when you're looking at other people's packages.
-
-# %% [markdown]
+# 
 # For our `greetings` package, right now we are adding only the name of the package and its version number.
 # This information is included in the `project` section of our `pyproject.toml` file.
 #
@@ -182,11 +166,7 @@ packages = [
 # pip install .
 
 # %% [markdown]
-#
 # And the package will be then available to use everywhere on the system. But so far this package doesn't contain anything and there's nothing we can run! We need to add some files first.
-#
-
-# %% [markdown]
 #
 # To create a regular package, we needed to have `__init__.py` files on each subdirectory that we want to be able to import. This is, since version 3.3 and the introduction of [Implicit Namespaces Packages](https://www.python.org/dev/peps/pep-0420/), not needed anymore.
 #
@@ -207,8 +187,6 @@ def greet(personal, family, title="", polite=False):
     greeting += f"{personal} {family}."
     return greeting
 
-
-
 # %% [markdown]
 # For the changes to take effect, we need to reinstall the library: 
 
@@ -224,15 +202,11 @@ from greetings.greeter import greet
 
 greet("Terry", "Gilliam")
 
-
 # %% [markdown]
 # ## Convert the script to a module
-
-# %% [markdown]
-#
+# 
 # Of course, there's more to do when taking code from a quick script and turning it into a proper module:
-
-# %% [markdown]
+# 
 # We need to add docstrings to our functions, so people can know how to use them.
 
 # %%
@@ -268,7 +242,6 @@ def greet(personal, family, title="", polite=False):
     greeting += f"{personal} {family}."
     return greeting
 
-
 # %% [markdown]
 # We can see the documentation using `help`.
 
@@ -278,19 +251,9 @@ help(greet)
 # %% [markdown]
 # The documentation string explains how to use the function; don't worry about this for now, we'll consider
 # this on [the next section](./04documentation.html) ([notebook version](./04documentation.ipynb)).
-
-# %% [markdown]
+# 
 # ## Write an executable script
-
-# %% [markdown]
-#
-#
-#
-#
-#
-#
-
-# %% [markdown]
+# 
 # We can create an executable script, `command.py` that uses our greeting functionality and the `process` function we created in the previous section.
 #
 # Note how we are importing `greet` using [relative imports](https://www.python.org/dev/peps/pep-0328/), where `.greeter` means to look for a `greeter` module within the same directory.
@@ -328,8 +291,7 @@ if __name__ == "__main__":
 
 # %% [markdown]
 # #### Specify entry point
-
-# %% [markdown]
+# 
 # This allows us to create a command to execute part of our library. In this case when we execute `greet` on the terminal, we will be calling the `process` function under `greetings/command.py`.
 #
 # We can encode this into our package information by specifying the `project.scripts` field in our `pyproject.toml` file.
@@ -358,11 +320,7 @@ packages = [
 # pip install .
 
 # %% [markdown]
-#
 # And the scripts are now available as command line commands, so the following commands can now be run:
-#
-#
-#
 
 # %% language="bash"
 # greet --help
@@ -374,8 +332,7 @@ packages = [
 
 # %% [markdown]
 # ## Specify dependencies
-
-# %% [markdown]
+# 
 # Let's give some life to our output using ascii art
 
 # %%
@@ -445,37 +402,25 @@ packages = [
 
 # %% [markdown]
 # ## Installing from GitHub
-
-# %% [markdown]
 #
 # We could now submit "greeter" to PyPI, so everyone could `pip install` it.
 #
 # However, when using git, we don't even need to do that: we can install directly from any git URL:
 #
-
-# %% [markdown]
 # ```bash
 # pip install git+git://github.com/UCL-ARC-RSEing-with-Python/greeter
 # ```
-
-# %% [markdown]
+# 
 # ```bash
 # $ greet Lancelot the-Brave --title Sir
 # Hey, Sir Lancelot the-Brave.
 # ```
-
-# %% [markdown]
+# 
 # <hr>
 # There are a few additional text files that are important to add to a package: a readme file, a licence file and a citation file.
-
-# %% [markdown]
-#
-#
-
-# %% [markdown]
+# 
 # ## Write a readme file
-
-# %% [markdown]
+# 
 # The readme file might look like this:
 
 # %%
@@ -504,8 +449,7 @@ greeter.greet(user.name, user.lastname)
 
 # %% [markdown]
 # ## Write a license file
-
-# %% [markdown]
+# 
 # We will discus more about [licensing in a later section](https://github-pages.ucl.ac.uk/rsd-engineeringcourse/ch04packaging/07Licensing.html). For now let's assume we want to release this package into the public domain:
 
 # %%
@@ -517,8 +461,7 @@ This "greetings" example package is granted into the public domain.
 
 # %% [markdown]
 # ## Write a citation file
-
-# %% [markdown]
+# 
 # A citation file will inform our users how we would like to be cited when refering to our software:
 
 # %%
@@ -531,21 +474,12 @@ Portions of the material are taken from [Software Carpentry](http://software-car
 
 # %% [markdown]
 # You may well want to formalise this using the [codemeta.json](https://codemeta.github.io/) standard or the [citation file format](http://citation-file-format.github.io/).
-
-
-# %% [markdown]
+# 
 # ## Write some unit tests
-
-# %% [markdown]
+# 
 # We can now write some tests to our library. 
 #
 # Separating the script from the logical module made this possible.
-#
-#
-#
-#
-#
-#
 
 # %%
 # %%writefile greetings_repo/tests/test_greeter.py
@@ -565,16 +499,7 @@ def test_greet():
 
 
 # %% [markdown]
-#
-#
-#
 # Add a fixtures file:
-#
-#
-#
-#
-#
-#
 
 # %%
 # %%writefile greetings_repo/tests/fixtures/samples.yaml
@@ -621,7 +546,6 @@ def read_fixture():
 def test_greeter(fixture):
     answer = fixture.pop('answer')
     assert greet(**fixture) == answer
-
 
 # %% [markdown]
 # Now when we run `pytest`, we get a failure per element in our fixture and we know all that fails.
@@ -683,19 +607,15 @@ packages = [
   "src/greetings",
 ]
 
-
 # %% [markdown]
 # ## Developer Install
-
-# %% [markdown]
 #
 # If you modify your source files, you would now find it appeared as if the program doesn't change.
 #
 # That's because pip install **copies** the files.
 #
 # If you want to install a package, but keep working on it, you can do:
-
-# %% [markdown]
+# 
 # ```bash
 # pip install --editable .
 # ```
@@ -711,12 +631,9 @@ packages = [
 # ```bash
 # pip install -e ".[dev]"
 # ```
-
-# %% [markdown]
+# 
 # ## Distributing compiled code
-
-# %% [markdown]
-#
+# 
 # If you're working in C++ or Fortran, there is no language specific repository.
 # You'll need to write platform installers for as many platforms as you want to
 # support.
@@ -727,12 +644,8 @@ packages = [
 # * `rpm` for `yum`/`dnf` on Redhat and Fedora
 # * `homebrew` on OSX (Possibly `macports` as well)
 # * An executable `msi` installer for Windows.
-#
-
-# %% [markdown]
+# 
 # #### Homebrew
-
-# %% [markdown]
 #
 # Homebrew: A ruby DSL, you host off your own webpage
 #
@@ -740,8 +653,6 @@ packages = [
 #
 # If you're on OSX, do:
 #
-
-# %% [markdown]
 # ```
 # brew tap jamespjh/homebrew-reactor
 # brew install reactor

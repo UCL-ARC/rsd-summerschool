@@ -13,18 +13,12 @@
 
 # %% [markdown]
 # # Construction
-
-# %% [markdown]
 #
 # Software *design* gets a lot of press (Object orientation, UML, design patterns).
 #
 # In this session we're going to look at advice on software *construction*.
 #
-
-# %% [markdown]
 # ## Construction vs Design
-
-# %% [markdown]
 #
 # For a given piece of code, there exist several different ways one could write it:
 #
@@ -33,25 +27,17 @@
 # * Choice of layout
 #
 # The consideration of these questions is the area of Software Construction.
-#
-
-# %% [markdown]
+# 
 # ## Low-level design decisions
-
-# %% [markdown]
-#
+# 
 # We will also look at some of the lower-level software design decisions in the context of this section:
 #
 # * Division of code into subroutines
 # * Subroutine access signatures
 # * Choice of data structures for readability
 #
-
-# %% [markdown]
 # ## Algorithms and structures
-
-# %% [markdown]
-#
+# 
 # We will not, in discussing construction, be looking at decisions as to how design questions impact performance:
 #
 # * Choice of algorithms
@@ -60,12 +46,8 @@
 #
 # We will consider these in a future discussion of performance programming.
 #
-
-# %% [markdown]
 # ## Architectural design
-
-# %% [markdown]
-#
+# 
 # We will not, in this session, be looking at the large-scale questions of how program components interact,
 # the stategic choices that govern how software behaves at the large scale:
 #
@@ -75,20 +57,12 @@
 #
 # We will consider these in a future session.
 #
-
-# %% [markdown]
 # ## Construction
-
-# %% [markdown]
-#
+# 
 # So, we've excluded most of the exciting topics. What's left is the bricks and mortar of software:
 # how letters and symbols are used to build code which is readable.
 #
-
-# %% [markdown]
 # ## Literate programming
-
-# %% [markdown]
 #
 # In literature, books are enjoyable for different reasons:
 #
@@ -103,11 +77,7 @@
 # plots corresponds to algorithms, but the rhythm of sentences and the choice of words corresponds
 # to software construction.
 #
-
-# %% [markdown]
 # ## Programming for humans
-
-# %% [markdown]
 #
 # * Remember you're programming for humans as well as computers
 # * A program is the best, most rigorous way to describe an algorithm
@@ -115,15 +85,8 @@
 #
 # Read Steve McConnell's [Code Complete](https://en.wikipedia.org/wiki/Code_Complete) [[UCL library](https://ucl-new-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=UCL_LMS_DS21156385750004761&context=L)].
 #
-#
-#
-#
-#
-
-# %% [markdown]
 # ## Setup
-
-# %% [markdown]
+# 
 # This notebook is based on a number of fragments of code, with an implicit context.
 # We've made a library to set up the context so the examples work.
 

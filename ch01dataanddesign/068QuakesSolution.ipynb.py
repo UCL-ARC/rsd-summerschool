@@ -60,8 +60,7 @@ assert quakes_response.status_code == 200
 
 # %% [markdown]
 # ## Parse the data as JSON
-
-# %% [markdown]
+# 
 # We saw in the exercise notebooks that the `Reponse` objects returned by `requests.get` have various attributes that allow accessing the response content in different formats including `Response.content` to get the raw `bytes` content and `Response.text` to get the response as a (Unicode) `str` object. We can print out all of the attributes of an object in Python using the inbuilt `dir` function; typically these will include attributes intended for internal use only which are conventionally indicated by prefixing with an underscore character `_`. We can display all the attributes without an initial underscore character as follows.
 
 # %%
@@ -91,7 +90,6 @@ quakes_json = quakes_response.json()
 # ## Investigate the data to discover how it is structured.
 #
 # Now that we have queried and decoded the data into a Python object, we need to do some exploration to find out how it is structure. In some cases there may be documentation we can use to help guide our exploration of data - for example [this page on the USGS earthquake catalog website](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) gives a summary of the GeoJSON format. However, in other cases we may not be so lucky and have to work with data with an undocumented format so it is also useful to consider how we might explore that data structure ourselves.  
-#
 #
 # A potentially useful first step is to check what the type of the `quakes_json` object is.
 
@@ -163,8 +161,7 @@ quakes_json['features'][0]['properties']['url']
 
 # %% [markdown]
 # we can confirm that this is indeed a correct interpretation of the data as the listed magnitude corresponds to the value for the `mag` key while the longitude (East-West axis) and latitude (North-South axis) coordinates (in degrees) of the event location correspond to the first two elements respectively in the list associated with the `coordinates` key (with the third coordinate corresponding to the depth of the event).
-
-# %% [markdown]
+# 
 # ## Find the largest quake(s)
 #
 # Now that we have a handle on the structure of the data, we are ready to search through the data to identify the largest magnitude earthquake event(s). We are interested in finding the element (or elements) in a sequence which maximises some property - this operation is termed the [$\arg\max$ in mathematics and computer science](https://en.wikipedia.org/wiki/Arg_max). While there is built-in `max` function in Python there is no corresponding `argmax` function, though several external libraries including the NumPy library which we encounter in a subsequent lesson do include an `argmax` function.
@@ -209,8 +206,7 @@ print([quake['properties']['mag'] for quake in largest_magnitude_events])
 
 # %% [markdown]
 # ## Get a map at the point of the quake
-
-# %% [markdown]
+# 
 # We saw something similar in the [Greengraph example](../ch01python/010exemplar.html#More-complex-functions) [(notebook version)](../ch01python/010exemplar.ipynb#More-complex-functions) of the previous chapter.
 
 # %%

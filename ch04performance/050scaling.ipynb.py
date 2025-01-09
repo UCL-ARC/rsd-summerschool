@@ -13,8 +13,7 @@
 
 # %% [markdown]
 # # Scaling for containers and algorithms
-
-# %% [markdown]
+# 
 # We've seen that NumPy arrays are really useful. Why wouldn't we always want to use them for data which is all the same type?
 
 # %%
@@ -62,8 +61,7 @@ plot_time(time_append_to_ndarray, counts)
 
 # %% [markdown]
 # Adding an element to a Python list is way faster! Also, it seems that adding an element to a Python list is independent of the length of the list, but it's not so for a NumPy array.
-
-# %% [markdown]
+# 
 # How do they perform when accessing an element in the middle?
 
 # %%
@@ -91,8 +89,7 @@ plot_time(time_lookup_middle_element_in_ndarray, counts)
 
 # %% [markdown]
 # Both scale well for accessing the middle element.
-
-# %% [markdown]
+# 
 # What about inserting at the beginning?
 #
 # If we want to insert an element at the beginning of a Python list we can do:
@@ -117,8 +114,7 @@ plot_time(time_insert_to_list, counts)
 
 # %% [markdown]
 # `list` performs **badly** for insertions at the beginning!
-
-# %% [markdown]
+# 
 # There are containers in Python that work well for insertion at the start:
 
 # %%
@@ -135,7 +131,6 @@ def time_insert_to_deque(count):
 # %%
 plot_time(time_insert_to_deque, counts)
 
-
 # %% [markdown]
 # But looking up in the middle scales badly:
 
@@ -146,44 +141,32 @@ def time_lookup_middle_element_in_deque(count):
         x = before[count // 2]
     return repeat(totime, number=10000)
 
-
 # %%
 plot_time(time_lookup_middle_element_in_deque, counts)
 
-
 # %% [markdown]
 # What is going on here?
-
-# %% [markdown]
+# 
 # Arrays are stored as contiguous memory. Anything which changes the length of the array requires the whole array to be copied elsewhere in memory.
-
-# %% [markdown]
+# 
 # This copy takes time proportional to the array size.
-
-# %% [markdown]
+# 
 # ![Adding an element to an array - memory representation](./array_memory.svg)
-
-# %% [markdown]
+# 
 # The Python `list` type is **also** an array, but it is allocated with **extra memory**. Only when that memory is exhausted is a copy needed.
-
-# %% [markdown]
+# 
 # ![Adding an element to a list - memory representation](list_memory.svg)
-
-# %% [markdown]
+# 
 # If the extra memory is typically the size of the current array, a copy is needed every 1/N appends, and costs N to make, so **on average** copies are cheap. We call this **amortized constant time**. 
 #
 # This makes it fast to look up values in the middle. However, it may also use more space than is needed.
-
-# %% [markdown]
+# 
 # The deque type works differently: each element contains a pointer to the next. Inserting elements is therefore very cheap, but looking up the Nth element requires traversing N such pointers.
-
-# %% [markdown]
+# 
 # ![Adding an element to a deque - memory representation](deque_memory.svg)
-
-# %% [markdown]
+# 
 # ## Dictionary performance
-
-# %% [markdown]
+# 
 # For another example, let's consider the performance of a dictionary versus a couple of other ways in which we could implement an associative array.
 
 # %%
@@ -196,7 +179,6 @@ class evildict:
             if key == akey:
                 return value
         raise KeyError()
-
 
 # %% [markdown]
 # If we have an evil dictionary of N elements, how long would it take - on average - to find an element?
@@ -222,7 +204,6 @@ x = ["Hello", "License", "Fish", "Eric", "Pet", "Halibut"]
 # %%
 sorted(x, key=lambda el: el.lower())
 
-
 # %% [markdown]
 # What if we created a dictionary where we bisect the search?
 
@@ -241,13 +222,11 @@ class sorteddict:
         
         raise KeyError()
 
-
 # %%
 eric_sorted = sorteddict(eric)
 
 # %%
 eric_sorted["Job"]
-
 
 # %%
 def time_dict_generic(ttype, count, number=10000):
@@ -258,7 +237,6 @@ def time_dict_generic(ttype, count, number=10000):
     def totime():
         x = data[keys[count // 2]]
     return repeat(totime, number=10000)
-
 
 # %%
 time_dict = lambda count: time_dict_generic(dict, count)
@@ -287,6 +265,5 @@ plot_time(time_dict, counts, title='dict')
 #
 # This uses a miracle of programming called the _Hash Table_:
 # you can learn more about [these issues at this video from Harvard University](https://www.youtube.com/watch?v=h2d9b_nEzoA). This material is pretty advanced, but, I think, really interesting!
-
-# %% [markdown]
+# 
 # Optional exercise: determine what the asymptotic peformance for the Boids model in terms of the number of Boids. Make graphs to support this. Bonus: how would the performance scale with the number of dimensions?

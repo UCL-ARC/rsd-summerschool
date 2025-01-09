@@ -13,22 +13,15 @@
 
 # %% [markdown]
 # # Documentation
-
-# %% [markdown]
+# 
 # ## Documentation is hard
-
-# %% [markdown]
 #
 # * Good documentation is hard, and very expensive.
 # * Bad documentation is detrimental.
 # * Good documentation quickly becomes bad if not kept up-to-date with code changes.
 # * Professional companies pay large teams of documentation writers.
 #
-
-# %% [markdown]
 # ## Prefer readable code with tests and vignettes
-
-# %% [markdown]
 #
 # If you don't have the capacity to maintain great documentation,
 # focus on:
@@ -37,19 +30,14 @@
 # * Automated tests
 # * Small code samples demonstrating how to use the api
 #
-
-# %% [markdown]
 # ## Comment-based Documentation tools
-
-# %% [markdown]
-#
+# 
 # Documentation tools can produce extensive documentation about your code by pulling out comments near the beginning of functions,
 # together with the signature, into a web page.
 #
 # The most popular is [Doxygen](http://www.doxygen.nl/).
 #
 # Here are some other documentation tools used in different languages, have a look at the generated and source examples:
-#
 #
 # | Language | Name                                                                                | Output example                                                                      | source                                                                                                                                           |
 # | ---      | ---                                                                                 | ---                                                                                 | ---                                                                                                                                              |
@@ -61,17 +49,11 @@
 # | Rust     | [rustdoc](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html)                   | [`Matrix` docs](https://docs.rs/nalgebra/0.18.0/nalgebra/base/struct.Matrix.html)   | [`Matrix` docstring source](https://github.com/dimforge/nalgebra/blob/8ea8ac70d5ad4bae865e6246a48455bf0b3fa3d2/src/base/matrix.rs#L59-L157)      |
 #
 # [Breathe](https://breathe.readthedocs.io/en/latest/) can be used to make Sphinx and Doxygen work together (good to keep documentation, for example, of a C++ project that includes Python bindings). [roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) is another good option for R packages.
-#
-#
-#
-
-# %% [markdown]
+# 
 # ## Example of using Sphinx
-
-# %% [markdown]
-# ## Write some docstrings
-
-# %% [markdown]
+# 
+# ### Write some docstrings
+# 
 # We're going to document our "greeter" example from the previous section using docstrings with Sphinx.
 #
 # There are various conventions for how to write docstrings, but the native Sphinx one doesn't look nice when used with
@@ -80,8 +62,7 @@
 # In writing Greeter, we used the [docstring conventions from NumPy](https://numpy.org/doc/stable/docs/howto_document.html).
 # So we use the [`numpydoc`](https://numpydoc.readthedocs.io/en/latest/) sphinx extension to
 # support these (**NOTE:** you will need to install this extension for the later examples to work).
-
-# %% [markdown]
+# 
 # ```python
 # """ 
 # Generate a greeting string for a person.
@@ -106,29 +87,22 @@
 #     An appropriate greeting
 # """
 # ```
-
-# %% [markdown]
-# ## Set up Sphinx
-
-# %% [markdown]
+# 
+# ### Set up Sphinx
+# 
 # Install Sphinx using the [appropiate instructions](https://www.sphinx-doc.org/en/master/usage/installation.html) for your system following the documentation online.
 # (Note that your output and the linked documentation may differ slightly depending on when you installed Sphinx and what version you're using.)
-
-# %% [markdown]
 #
 # Invoke the [sphinx-quickstart](https://www.sphinx-doc.org/en/master/usage/quickstart.html) command to build Sphinx's
 # configuration file automatically based on questions
 # at the command line:
-
-# %% [markdown]
+# 
 # ``` bash
 # sphinx-quickstart
 # ```
-
-# %% [markdown]
+# 
 # Which responds:
-
-# %% [markdown]
+# 
 # ```
 # Welcome to the Sphinx 4.2.0 quickstart utility.
 #
@@ -167,13 +141,11 @@
 #    make builder
 # where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 # ```
-
-# %% [markdown]
+# 
 # and then look at and adapt the generated config - a file called
 # `conf.py` in the root of the project - with, for example, the extensions we want to use.
 # This config file contains the project's Sphinx configuration, as Python variables:
-
-# %% [markdown]
+# 
 # ``` python
 # #Add any Sphinx extension module names here, as strings. They can be
 # #extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -186,10 +158,8 @@
 #     'numpydoc'             # Support NumPy style docstrings
 # ]
 # ```
-
-# %% [markdown]
+# 
 # To proceed with the example, we'll copy a finished conf.py into our folder, though normally you'll always use `sphinx-quickstart`
-#
 
 # %% jupyter={"outputs_hidden": false}
 # %%writefile greetings/conf.py
@@ -238,19 +208,11 @@ texinfo_documents = [
 ]
 
 # %% [markdown]
-# ## Define the root documentation page
-
-# %% [markdown]
+# ### Define the root documentation page
 #
 # Sphinx uses [RestructuredText](https://docutils.sourceforge.io/rst.html) another wiki markup format similar to Markdown.
 #
 # You define an "index.rst" file to contain any preamble text you want. The rest is autogenerated by `sphinx-quickstart`
-#
-#
-#
-#
-#
-#
 
 # %% jupyter={"outputs_hidden": false}
 # %%writefile greetings/index.rst
@@ -263,32 +225,22 @@ Simple "Hello, James" module developed to teach research software engineering.
 
 
 # %% [markdown]
-# ##  Run sphinx
-
-# %% [markdown]
+# ### Run sphinx
 #
 # We can run Sphinx using:
-#
 
 # %% jupyter={"outputs_hidden": false} language="bash"
 # cd greetings/
 # sphinx-build . doc
 
 # %% [markdown]
-# ## Sphinx output
-
-# %% [markdown]
+# ### Sphinx output
+# 
 # Sphinx's output is [html](./greetings/doc/index.html). We just created a simple single function's documentation, but Sphinx will create
 # multiple nested pages of documentation automatically for many functions.
-#
-#
-#
-#
-
-# %% [markdown]
+# 
 # ## Doctest - testing your documentation is up to date
-
-# %% [markdown]
+# 
 # `doctest` is a module included in the standard library. It runs all the code within the docstrings and checks whether the output is what it's claimed on the documentation.
 #
 # Let's add an example to our greeting function and check it with `doctest`. We are leaving the output with a small typo (missing the closing quote `'`) to see what's the type of output we get from `doctest`.
@@ -332,12 +284,7 @@ def greet(personal, family, title="", polite=False):
 # python -m doctest greetings/greetings/greeter.py
 
 # %% [markdown]
-#  
-
-# %% [markdown]
 # which clearly identifies a tiny error in our example.
-
-# %% [markdown]
 # pytest can run the doctest too if you call it as:
 #
 # `pytest  --doctest-modules`

@@ -13,8 +13,7 @@
 
 # %% [markdown]
 # # Recap example: Monte-Carlo
-
-# %% [markdown]
+# 
 # ## Problem: Implement and test a simple Monte-Carlo algorithm
 #
 # Given an input function (energy) and starting point (density) and a temperature $T$: 
@@ -29,34 +28,28 @@
 # 1. Compute $P_0=e^{-\beta (E_1 - E_0)}$ and $P_1$ a uniformly distributed random number between 0 and 1,
 # 1. If $P_0 > P_1$, do the move anyway.
 # 1. Repeat.
-
-# %% [markdown]
+# 
 # * the algorithm should work for (m)any energy function(s).
 # * there should be separate tests for separate steps! What constitutes a step?
 # * tests for the Monte-Carlo should not depend on other parts of code.
 # * Use [matplotlib](http://matplotlib.org/) to plot density at each iteration, and make an animation
-
-# %% [markdown]
+# 
 # ## Solution
-
-# %% [markdown]
+# 
 # We need to break our problem down into pieces:
-
-# %% [markdown]
+# 
 # 1. A function to generate a random change: `random_agent()`, `random_direction()`
 # 1. A function to compute the energy before the change and after it: `energy()`
 # 1. A function to determine the probability of a change given the energy difference (1 if decreases, otherwise based on exponential): `change_density()`
 # 1. A function to determine whether to execute a change or not by drawing a random number`accept_change()`
 # 1. A method to iterate the above procedure: `step()`
-
-# %% [markdown]
+# 
 # Next Step: Think about the possible unit tests
-
-# %% [markdown]
+# 
 # 1. Input insanity: e.g. density should non-negative integer; testing by giving negative values etc.
-# 1. `change_density()`: density is change by a particle hopping left or right? Do all positions have an equal chance of moving?
-# 1. `accept_change()` will move be accepted when second energy is lower?
-# 1. Make a small test case for the main algorithm. (Hint: by using mocking, we can pre-set who to move where.)
+# 2. `change_density()`: density is change by a particle hopping left or right? Do all positions have an equal chance of moving?
+# 3. `accept_change()` will move be accepted when second energy is lower?
+# 4. Make a small test case for the main algorithm. (Hint: by using mocking, we can pre-set who to move where.)
 
 # %% language="bash"
 # mkdir -p DiffusionExample
@@ -330,5 +323,4 @@ def test_main_algorithm():
 
 # %% language="bash"
 # cd DiffusionExample
-# py.test
-#
+# pytest

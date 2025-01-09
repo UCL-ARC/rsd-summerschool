@@ -30,19 +30,15 @@
 # * R: [RStudio](http://www.rstudio.com/ide/docs/debugging/overview),
 #   [debug](http://stat.ethz.ch/R-manual/R-devel/library/base/html/debug.html),
 #   [browser](http://stat.ethz.ch/R-manual/R-devel/library/base/html/browser.html).
-
-# %% [markdown]
+# 
 # ## Using the python debugger
-
-# %% [markdown]
+# 
 # Unfortunately this doesn't work nicely in the notebook. But from the command line, you can run a python program with:
-
-# %% [markdown]
+# 
 # ``` bash
 # python -m pdb my_program.py
 # ```
-
-# %% [markdown]
+# 
 # ## Basic navigation:
 #
 # Basic command to navigate the code and the python debugger:
@@ -87,8 +83,7 @@ print(density) # We are now "inside" the energy function and can print any varia
 
 # %% [markdown]
 # Alternatively, break-points can be set on files: `b file.py:20` will stop on line 20 of `file.py`.
-
-# %% [markdown]
+# 
 # ## Post-mortem
 #
 # Debugging when something goes wrong:
@@ -101,11 +96,9 @@ print(density) # We are now "inside" the energy function and can print any varia
 # 1. use `w` and `l` for position in code and in call stack
 # 1. use `up` and `down` to navigate up and down the call stack
 # 1. inspect variables along the way to understand failure
-
-# %% [markdown]
+# 
 # This **does** work in the notebook.
-
-# %% [markdown]
+# 
 # ```
 # %pdb on
 # from diffusion.model import energy

@@ -13,10 +13,8 @@
 
 # %% [markdown]
 # # Patterns
-
-# %% [markdown]
+# 
 # ## Class Complexity
-#
 #
 # We've seen that using object orientation can produce quite complex class structures, with classes owning each other, instantiating each other,
 # and inheriting from each other.
@@ -26,8 +24,7 @@
 # > - How much flexibility should I allow in this class's inner workings?
 # > - Should I split this related functionality into multiple classes or keep it in one?
 # > - To reuse functionality: should I use inheritance, or add class variable which it is delegated to?
-
-# %% [markdown]
+# 
 # ### Inheritance vs composition
 #
 # The last point is known as `is-a` vs `has-a` or inheritance vs composition.
@@ -47,7 +44,6 @@
 #     - This can be bad because every subclass relies on its parent and changing one may need us to change the other
 #       (known as tight coupling)
 #
-#
 # **Composition** *(has-a)*:
 #
 # - Create separate classes (component) which carry out the shared functionality.
@@ -59,11 +55,8 @@
 #     - Doesn't have the problem of side effects cascading when you alter one component.
 #
 # We've linked to an article which carries out a deep dive on this topic in the [other resources section](#Other-resources)
-
-# %% [markdown]
+# 
 # ## Design Patterns
-
-# %% [markdown]
 #
 # Programmers have noticed that there are certain ways of arranging classes that work better than others.
 #
@@ -72,12 +65,8 @@
 # They were first collected on one of the [world's first Wikis](http://c2.com/cgi/wiki?WelcomeVisitors), 
 # as the [Portland Pattern Repository](http://c2.com/cgi-bin/wiki?PatternIndex).
 #
-
-# %% [markdown]
 # ## Reading a pattern
-
-# %% [markdown]
-#
+# 
 # A description of a pattern in a book such as the [Gang Of Four](https://www.worldcat.org/title/design-patterns-elements-of-reusable-object-oriented-software/oclc/31171684)
 # book ([UCL Library](https://ucl-new-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=UCL_LMS_DS21146030410004761&context=L&vid=UCL_VU2&search_scope=CSCOP_UCL&tab=local&lang=en_US)) usually includes:
 #
@@ -91,12 +80,8 @@
 # * **Implementation** - How is it implemented
 # * **Sample Code** - In practice.
 #
-
-# %% [markdown]
 # ## Introducing Some Patterns
-
-# %% [markdown]
-#
+# 
 # There are lots and lots of design patterns, and it's a great literature to get into to
 # read about design questions in programming and learn from other people's experience.
 #
@@ -109,9 +94,8 @@
 # Some explanations won't click for some people even though we've tried.
 # So if you're stuck on wrapping your head around a pattern,
 # check out another explanation from the [other resources section](#Other-resources)
-
-# %% [markdown]
-# ## Supporting code
+# 
+# ### Supporting code
 
 # %% pycharm={"name": "#%%\n"}
 # %matplotlib inline
@@ -123,20 +107,14 @@ def yuml(model):
     result=requests.get("http://yuml.me/diagram/boring/class/" + model)
     return SVG(result.content)
 
-
-
 # %% [markdown]
 # ## Strategy Pattern
-
-# %% [markdown]
 #
 # Define a family of algorithms, encapsulate each one
 # (e.g. use composition, or a `has-a` relationship instead of inheritance), and make them interchangeable.
 # Strategy lets the algorithm vary independently, without requiring any class that uses it to change.
 #
-
-# %% [markdown]
-# ## Strategy pattern example: sunspots
+# ### Strategy pattern example: sunspots
 
 # %% pycharm={"name": "#%%\n"}
 import csv
@@ -160,7 +138,6 @@ import requests
 # - We want to analyse the variation in sunspot activity
 # - Sunspot activity is cyclical, we expect to find this cycle to be about 11 years
 # - We can use the Fast Fourier Transform (FFT) to process the sunspot signal
-#
 
 # %% pycharm={"name": "#%%\n"}
 def load_sunspots():
@@ -181,7 +158,7 @@ plt.ylabel("Sunspot number")
 
 
 # %% [markdown]
-# ## Sunspot cycle has periodicity
+# #### Sunspot cycle has periodicity
 
 # %% pycharm={"name": "#%%\n"}
 # Use Fast Fourier Transform
@@ -197,9 +174,8 @@ plt.xlabel("Real coefficients")
 
 
 # %% [markdown]
-# ## Years are not constant length
-
-# %% [markdown]
+# #### Years are not constant length
+# 
 # After we've started out analysis we realise there's a potential problem with this analysis:
 #
 # * Years are not constant length
@@ -215,11 +191,9 @@ plt.xlabel("Real coefficients")
 # We also want to find the period of the strongest periodic signal in the data, there are
 # various different methods we could use for this also, such as integrating the fourier series
 # by quadrature to find the mean frequency, or choosing the largest single value.
-
-# %% [markdown]
-# ## Number of child-classes can increase quickly
-
-# %% [markdown]
+# 
+# #### Number of child-classes can increase quickly
+# 
 # We could implement a base class for our common code between the different approaches,
 # and define derived classes for each different algorithmic approach. However, this has drawbacks:
 #
@@ -229,17 +203,15 @@ plt.xlabel("Real coefficients")
 # of derived classes would explode: `class SunspotAnalyzerSplineFFTTrapeziumNearMode` is a bit unwieldy.
 # * The algorithmic choices are not then available for other projects (so we may have to reinvent the wheel next time)
 # * This design doesn't fit with a clean Ontology of "kinds of things": there's no Abstract Base for spectrogram generators...
-
-# %% [markdown]
-# ### Apply the strategy pattern:
+# 
+# #### Apply the strategy pattern
 
 # %% [markdown]
 # * We implement each algorithm for generating a spectrum as its own Strategy class.
 # * They all implement a common interface
 # * Arguments to strategy constructor specify parameters of algorithms, such as spline degree
 # * One strategy instance for each algorithm is passed to the constructor for the overall analysis
-
-# %% [markdown]
+# 
 # First, we'll define a helper class for our time series.
 
 # %% pycharm={"name": "#%%\n"}
@@ -297,7 +269,6 @@ class SunspotDataAnalyser(object):
     def frequency_data(self):
         return self.frequency_strategy.transform(self.series)
 
-
 # %% [markdown]
 # Here is our existing simple fourier method, implemented as a strategy
 
@@ -310,7 +281,6 @@ class FourierNearestFrequencyStrategy:
         return Series(list(
             zip(frequencies, abs(transformed)/series.count))
         )
-
 
 # %% [markdown]
 # A strategy based on interpolation to a spline
@@ -332,7 +302,6 @@ class FourierSplineFrequencyStrategy:
                               series.range/fft_count)[0:fft_count//2]
         return Series(list(zip(frequencies, abs(transformed)/fft_count)))
 
-
 # %% [markdown]
 # A strategy using the Lomb-Scargle Periodogram
 
@@ -348,7 +317,6 @@ class LombFrequencyStrategy:
         return Series(list(
             zip(frequencies, sqrt(result / series.count)))
         )
-
 
 # %% [markdown]
 # Define our concrete solutions with particular strategies,
@@ -376,12 +344,9 @@ plt.ylabel("Power")
 
 # %% [markdown]
 # Here we get the expected cycle length of around 11 years 🎉
-
-# %% [markdown]
+# 
 # ## Factory Method
-
-# %% [markdown]
-#
+# 
 # Here's what the Gang of Four Book says about Factory Method:
 #
 # **Intent**:  Define an interface for creating an object, but let subclasses decide which class to instantiate.
@@ -391,10 +356,8 @@ plt.ylabel("Power")
 #
 # * A class can't anticipate the class of objects it must create
 # * A class wants its subclasses to specify the objects it creates
-
-# %% [markdown]
-# ## Factory UML
-#
+# 
+# ### Factory UML
 
 # %% pycharm={"name": "#%%\n"}
 yuml("[Product]^-[ConcreteProduct], "
@@ -403,9 +366,8 @@ yuml("[Product]^-[ConcreteProduct], "
 
 # %% [markdown]
 # This is all very abstract, so let's get a clearer idea of what that means with an example.
-
-# %% [markdown]
-# ## Initial Example
+# 
+# ### Initial Example
 
 # %% [markdown]
 # We have created code that can analyse imaging data from different types of instrument.
@@ -414,8 +376,6 @@ yuml("[Product]^-[ConcreteProduct], "
 #
 # To do this we have created a `GenericImage` class which implements default methods for interacting
 # with imaging data.
-#
-#
 
 # %% pycharm={"name": "#%%\n"}
 import matplotlib.pyplot as plt
@@ -471,7 +431,7 @@ class GenericImage:
         return normalised_data
 
 # %% [markdown]
-# ## Implemented classes
+# #### Implemented classes
 #
 # Here are four example child classes that have implemented their own internal methods for normalising
 # the image data and creating a coloured image. We can use these in exactly the same way as our
@@ -582,7 +542,6 @@ class LeicaImage(GenericImage):
 # Whenever we load an image we want to use the correct image class, falling back to the GenericImage
 # if we can't fine a match from our known entities.
 #
-#
 # A naive implementation of this would to have an `if else` block where we use the image metadata
 # to determine what the right image class is.
 
@@ -652,11 +611,8 @@ class MicroscopyFactory(ImageFactory):
 # class should be returned from the factory method, including leveraging the statefullness of the
 # class to help with the logic.
 #
-
-# %% [markdown]
 # ## Builder Pattern
-
-# %% [markdown]
+# 
 # **Intent**: Separate the steps for constructing a complex object from its final representation.
 
 # %% pycharm={"name": "#%%\n"}
@@ -666,9 +622,8 @@ yuml("[Director|Construct()]<>->[Builder| (a) BuildPart()],"+
 
 
 # %% [markdown]
-# ## Builder example
-
-# %% [markdown]
+# ### Builder example
+# 
 # Imagine that we have a large model with many parameters that we want to run.
 #
 # There's a lot more to defining a model than just adding agents of different kinds:
@@ -686,9 +641,8 @@ class Model:
 
 
 # %% [markdown]
-# ### Builder preferred to complex constructor
-
-# %% [markdown]
+# #### Builder preferred to complex constructor
+# 
 # However, long constructors easily become very complicated.
 # Instead, it can be cleaner to define a Builder for models.
 # A builder is like a deferred factory:
@@ -706,8 +660,6 @@ class Model:
     def simulate(self):
         print("Starting simulation")
         ...
-
-
 
 # %% pycharm={"name": "#%%\n"}
 class ModelBuilder:
@@ -733,17 +685,13 @@ class ModelBuilder:
         # parameters that need to be set
         # have indeed been set.
 
-
 # %% [markdown]
-#
 # Inheritance of an Abstract Builder for multiple concrete builders could be used
 # where there might be multiple ways to build models with the same set of calls to the builder:
 # for example a version of the model builder yielding models which can be executed
 # in parallel on a remote cluster.
-#
-
-# %% [markdown]
-# ## Using a builder
+# 
+# #### Using a builder
 
 # %% pycharm={"name": "#%%\n"}
 builder = ModelBuilder()
@@ -757,10 +705,8 @@ model = builder.finish()
 model.simulate()
 
 # %% [markdown]
-# ## Avoid staged construction without a builder.
-
-# %% [markdown]
-#
+# #### Avoid staged construction without a builder.
+# 
 # We could, of course, just add all the building methods to the model itself,
 # rather than having the model be yielded from a separate builder.
 #
@@ -770,15 +716,12 @@ model.simulate()
 #
 # This results in very fragile code: its hard to keep track of whether an object instance is "ready" or not.
 # Use the builder pattern to keep deferred construction in control.
-
-# %% [markdown]
+# 
 # We might ask why we couldn't just use a validator in all of the methods that must follow the deferred constructors;
 # to check they have been called.
 # But we'd need to put these in *every* method of the class,
 # whereas with a builder, we can validate only in the `finish` method.
 #
-
-# %% [markdown]
 # ## Other resources
 #
 # There are a lot of design patterns and one explanation might not work well for all people so here are some extra
@@ -797,4 +740,3 @@ model.simulate()
 # - [Design Pattern for Dummies](http://www.worldcat.org/title/design-patterns-for-dummies/oclc/69537420&referer=brief_results)
 #   (Available on [O'Reilly](https://learning.oreilly.com/library/view/design-patterns-for/9780471798545/?sso_link=yes&sso_link_from=university-college-london)
 #   : sign in using your UCL email).
-#

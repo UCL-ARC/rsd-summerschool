@@ -13,15 +13,12 @@
 
 # %% [markdown]
 # # Class design
-
-# %% [markdown]
-#
+# 
 # The concepts we have introduced are common between different object oriented languages.
 # Thus, when we design our program using these concepts, we can think at an architectural level,
 # independent of language syntax.
 #
 # In Python:
-#
 
 # %%
 class Particle:
@@ -43,8 +40,7 @@ class Particle:
 #     void move(double delta_t);
 # }
 # ```
-
-# %% [markdown]
+# 
 # In Fortran:
 #
 # ``` fortran
@@ -56,31 +52,24 @@ class Particle:
 #     procedure :: move
 # end type particle
 # ```
-
-# %% [markdown]
+# 
 # ## UML
-
-# %% [markdown]
-#
+# 
 # UML is a conventional diagrammatic notation used to describe "class structures" and other higher level
 # aspects of software design.
 #
 # Computer scientists get worked up about formal correctness of UML diagrams and learning the conventions precisely.
 # Working programmers can still benefit from using UML to describe their designs.
 #
-
-# %% [markdown]
 # ## YUML
-
-# %% [markdown]
+# 
 # We can see a YUML model for a Particle class with `position` and `velocity` data and a `move()` method using
 # the [YUML](http://yuml.me/) online UML drawing tool ([example](http://yuml.me/diagram/boring/class/[Particle|position;velocity|move%28%29])).
 #
 # ```
 #     http://yuml.me/diagram/boring/class/[Particle|position;velocity|move%28%29]
 # ```
-
-# %% [markdown]
+# 
 # Here's how we can use Python code to get an image back from YUML:
 
 # %%
@@ -97,14 +86,10 @@ def yuml(model):
 # %%
 yuml("[Particle|position;velocity|move()]")
 
-
 # %% [markdown]
 # The representation of the `Particle` class defined above in UML is done with a box with three sections. The name of the class goes on the top, then the name of the member variables in the middle, and the name of the methods on the bottom. We will see later why this is useful.
-
-# %% [markdown]
+# 
 # ## Information Hiding
-
-# %% [markdown]
 #
 # Sometimes, our design for a program would be broken if users start messing around with variables we don't want them to change.
 #
@@ -114,9 +99,6 @@ yuml("[Particle|position;velocity|move()]")
 # In python, we use leading underscores to control whether member variables and methods can be accessed from outside the class:
 #  - single leading underscore (`_`) is used to document it's private but people could use it if wanted (thought they shouldn't);
 #  - double leading underscore (`__`) raises errors if called.
-#
-#
-#
 
 # %%
 class MyClass:
@@ -157,17 +139,11 @@ MyClass().__private_method() # Generates error
 # %%
 print(MyClass().__private_data) # Generates error
 
-
 # %% [markdown]
 # ## Property accessors
-
-# %% [markdown]
 #
 # Python provides a mechanism to make functions appear to be variables. This can be used if you want to
 # change the way a class is implemented without changing the interface:
-#
-#
-#
 
 # %%
 class Person:
@@ -178,13 +154,7 @@ assert(Person().name == "Graham Chapman")
 
 
 # %% [markdown]
-#
-#
-#
 # becomes:
-#
-#
-#
 
 # %%
 class Person(object):
@@ -202,19 +172,12 @@ assert(Person().name == "Graham Chapman")
 
 # %% [markdown]
 # Making the same external code work as before.
-
-# %% [markdown]
-#
-#
-#
+# 
 # Note that the code behaves the same way to the outside user.
 # The implementation detail is hidden by private variables.
 # In languages without this feature, such as C++, it is best to always
 # make data private, and always
 # access data through functions:
-#
-#
-#
 
 # %%
 class Person(object):
@@ -230,8 +193,6 @@ assert(Person().name() == "Graham Chapman")
 # %% [markdown]
 # But in Python this is unnecessary because the `@property` capability.
 #
-
-# %% [markdown]
 # Another way could be to create a member variable `name` which holds the full name. However, this could lead to inconsistent data. If we create a `get_married` function, then the name of the person won't change!
 
 # %%
@@ -250,30 +211,23 @@ assert(graham.name == "Graham Chapman")
 graham.get_married(david)
 assert(graham.name == "Graham Sherlock")
 
-
 # %% [markdown]
 # This type of situation could makes that the object data structure gets inconsistent with itself. Making variables being out of sync with other variables. Each piece of information should only be stored in once place! In this case, `name` should be calculated each time it's required as previously shown.
 # In database design, this is called [Normalisation](https://en.wikipedia.org/wiki/Database_normalization).
-
-# %% [markdown]
+# 
 # ### UML for private/public
-
-# %% [markdown]
+# 
 # We prepend a `+`/`-` on public/private member variables and methods:
 
 # %%
 yuml("[Particle|+public;-private|+publicmethod();-privatemethod]")
 
-
 # %% [markdown]
 # ## Class Members
-
-# %% [markdown]
-#
+# 
 # *Class*, or *static* members, belong to the class as a whole, and are shared between instances.
 #
 # This is an object that keeps a count on how many have been created of it.
-#
 
 # %%
 class Counted:
@@ -292,39 +246,26 @@ Counted.howMany()  # 1
 z = [Counted() for x in range(5)]
 Counted.howMany()  # 6 
 
-
 # %% [markdown]
 # The data is shared among all the objects instantiated from that class. Note that in `__init__` we are not using `self.number_created` but the name of the class. The `howMany` function is not a method of a particular object. It's called on the class, not on the object. This is possible by using the `@classmethod` decorator.
-
-# %% [markdown]
+# 
 # ## Inheritance and Polymorphism
-
-# %% [markdown]
+# 
 # ## Object-based vs Object-Oriented
-
-# %% [markdown]
-#
+# 
 # So far we have seen only object-based programming, not object-oriented programming.
 #
 # Using Objects doesn't mean your code is object-oriented.
 #
 # To understand object-oriented programming, we need to introduce **polymorphism** and **inheritance**.
 #
-
-# %% [markdown]
 # ## Inheritance
-
-# %% [markdown]
 #
 # * Inheritance is a mechanism that allows related classes to share code.
 # * Inheritance allows a program to reflect the *[ontology](https://en.wikipedia.org/wiki/Ontology_(information_science))* of kinds of thing in a program.
 #
-
-# %% [markdown]
 # ## Ontology and inheritance
-
-# %% [markdown]
-#
+# 
 # * A bird is a kind of animal
 # * An eagle is a kind of bird
 # * A starling is also a kind of bird
@@ -333,14 +274,7 @@ Counted.howMany()  # 6
 # * Only eagles hunt
 # * Only starlings flock
 #
-
-# %% [markdown]
 # ## Inheritance in python
-
-# %% [markdown]
-#
-#
-#
 
 # %%
 class Animal:
@@ -364,11 +298,9 @@ class Starling(Bird):
 Eagle().beBorn()
 Eagle().hunt()
 
-
 # %% [markdown]
 # ## Inheritance terminology
-
-# %% [markdown]
+# 
 # Here are two equivalents definition, one coming from C++ and another from Java:
 # * A *derived class* _derives_ from a *base class*.
 # * A *subclass* _inherits_ from a *superclass*.
@@ -381,12 +313,9 @@ Eagle().hunt()
 #
 # Another equivalent definition is using the synonym *child* / *parent* for *derived* / *base* class:
 # * A *child class* extends a *parent class*.
-#
-
-# %% [markdown]
+# 
 # ## Inheritance and constructors
-
-# %% [markdown]
+# 
 # To use implicitly constructors from a *superclass*, we can use `super` as shown below.
 
 # %%
@@ -399,14 +328,11 @@ class Person(Animal):
         super().__init__(age)
         self.name = name
 
-
 # %% [markdown]
 # Read [Raymond Hettinger](https://twitter.com/raymondh)'s [article about `super`](https://rhettinger.wordpress.com/2011/05/26/super-considered-super/) to see various real examples.
-
-# %% [markdown]
+# 
 # ## Inheritance UML diagrams
-
-# %% [markdown]
+# 
 # UML shows inheritance with an open triangular arrow pointing from subclass to superclass.
 
 # %%
@@ -414,42 +340,31 @@ yuml("[Animal]^-[Bird],[Bird]^-[Eagle],[Bird]^-[Starling]%")
 
 # %% [markdown]
 # ## Aggregation vs Inheritance
-
-# %% [markdown]
-#
+# 
 # If one object *has* or *owns* one or more objects, this is *not* inheritance.
 #
 # For example, the boids example we saw few weeks ago, could be organised as an overall Model, which it owns several Boids,
 # and each Boid owns two 2-vectors, one for position and one for velocity.
-#
 
 # %% [markdown]
 # ### Aggregation in UML
-
-# %% [markdown]
+# 
 # The Boids situation can be represented thus:
 
 # %%
 yuml("[Model]<>-*>[Boid],[Boid]position++->[Vector],[Boid]velocity++->[Vector]%")
-
 
 # %% [markdown]
 # The open diamond indicates **Aggregation**, the closed diamond **composition**.
 # (A given boid might belong to multiple models, a given position vector is forever part of the corresponding Boid.)
 #
 # The asterisk represents cardinality, a model may contain multiple Boids. This is a [one to many relationship](https://en.wikipedia.org/wiki/One-to-many_(data_model)). [Many to many relationship](https://en.wikipedia.org/wiki/Many-to-many_(data_model)) is shown with `*` on both sides.
-
-# %% [markdown]
+# 
 # ### Refactoring to inheritance
-
-# %% [markdown]
-#
+# 
 # Smell: Repeated code between two classes which are both ontologically subtypes of something
 #
 # Before:
-#
-#
-#
 
 # %%
 class Person:
@@ -468,13 +383,7 @@ class Pet:
 
 
 # %% [markdown]
-#
-#
-#
 # After:
-#
-#
-#
 
 # %%
 class Animal:
@@ -492,7 +401,6 @@ class Pet(Animal):
     def __init__(self, age, owner):
         self.owner = owner
         super().__init__(age)
-
 
 # %% [markdown]
 # ## Polymorphism
@@ -518,23 +426,15 @@ animals = [Dog(), Dog(), Cat(), Pig(), Cow(), Cat()]
 for animal in animals:
     print(animal.noise())
 
-
 # %% [markdown]
-#
-#
-#
 # This will print "Bark Bark Miaow Oink Moo Miaow"
 #
 # If two classes support the same method, but it does different things for the two classes, 
 # then if an object is of an unknown class, calling the method will invoke the version for
 # whatever class the instance is an instance of.
 #
-
-# %% [markdown]
 # ## Polymorphism and Inheritance
-
-# %% [markdown]
-#
+# 
 # Often, polymorphism uses multiple derived classes with a common base class.
 # However, [duck typing](https://en.wikipedia.org/wiki/Duck_typing) in Python means that all that is required is that the 
 # types support a common **Concept** (Such as iterable, or container, or, in this case, the
@@ -542,9 +442,6 @@ for animal in animals:
 #
 # A common base class is used where there is a likely **default** that you want several
 # of the derived classes to have.
-#
-#
-#
 
 # %%
 class Animal:
@@ -565,18 +462,12 @@ animals = [Dog(), Worm(), Pig(), Cow(), Poodle()]
 for animal in animals:
     print(animal.noise())
 
-
 # %% [markdown]
 # ## Undefined Functions and Polymorphism
-
-# %% [markdown]
 #
 # In the above example, we put in a dummy noise for Animals that don't know what type they are.
 #
 # Instead, we can explicitly deliberately leave this undefined, and we get a crash if we access an undefined method.
-#
-#
-#
 
 # %%
 class Animal:
@@ -585,22 +476,15 @@ class Animal:
 class Worm(Animal):
     pass
 
-
 # %%
 Worm().noise() # Generates error
 
-
 # %% [markdown]
 # ## Refactoring to Polymorphism
-
-# %% [markdown]
-#
+# 
 # Smell: a function uses a big set of `if` statements or a `case` statement to decide what to do:
 #
 # Before:
-#
-#
-#
 
 # %%
 class Animal:
@@ -618,11 +502,8 @@ class Animal:
 
 # %% [markdown]
 # which is better replaced by the code above.
-
-# %% [markdown]
+# 
 # ## Interfaces and concepts
-
-# %% [markdown]
 #
 # In C++, it is common to define classes which declare dummy methods, called "virtual" methods, which specify
 # the methods which derived classes must implement. Classes which define these methods, but which cannot be instantiated
@@ -631,12 +512,9 @@ class Animal:
 # Python's Duck Typing approach means explicitly declaring these is unnesssary: any class concept which implements
 # appropriately named methods will do. These as user-defined **concepts**, just as "iterable" or "container" are 
 # built-in Python concepts. A class is said to "implement an interface" or "satisfy a concept".
-#
-
-# %% [markdown]
+# 
 # ## Interfaces in UML
-
-# %% [markdown]
+# 
 # Interfaces implementation (a common ancestor that doesn't do anything but defines methods to share) in UML is indicated thus:
 
 # %%
@@ -644,8 +522,6 @@ yuml("[<<Animal>>]^-.-[Dog]")
 
 # %% [markdown]
 # ## Further UML
-
-# %% [markdown]
 #
 # UML is a much larger diagram language than the aspects we've shown here.
 #
@@ -653,6 +529,4 @@ yuml("[<<Animal>>]^-.-[Dog]")
 #
 # * Entity Relationship Diagrams can be used to show more general relationships between things in a system.
 #
-#
 # Read more about UML on Martin Fowler's [book about the topic](https://martinfowler.com/books/uml.html).
-#
