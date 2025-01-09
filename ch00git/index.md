@@ -1,9 +1,8 @@
 ---
-title: Version Control
+title: Github Pages Example
 ---
+Mountains and Lakes in the UK
+===================
 
-* Branching
-* Rebasing and Merging
-* Debugging with Git Bisect
-* Forks, Pull Requests and the GitHub Flow
-* Virtual Environments
+Engerland is not very mountainous.
+But has some tall hills, and maybe a mountain or two depending on your definition.
