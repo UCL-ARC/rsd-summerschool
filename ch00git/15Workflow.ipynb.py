@@ -1,7 +1,7 @@
 # ---
 # jupyter:
 #   jekyll:
-#     display_name: Working with environments
+#     display_name: A Typical Git and GitHub workflow
 #   jupytext:
 #     notebook_metadata_filter: -kernelspec,jupytext,jekyll
 #     text_representation:
@@ -12,7 +12,7 @@
 # ---
 
 # %% [markdown]
-# # Working with environments
+# # A Typical Git and GitHub workflow
 #
 # ## Different ways of collaborating 
 #

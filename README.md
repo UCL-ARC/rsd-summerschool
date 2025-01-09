@@ -92,10 +92,10 @@ In this summer school, you will move beyond programming, to learn how to constru
 
 This repository contains the course notes as Jupyter notebooks converted into `py:percent` format. This allows to edit the files as plain text as well as jupyter notebooks. To edit them as jupyter notebooks you'll need to have installed jupytext and open the `ipynb.py` files as notebooks via right-click and select "open with" and "notebook" on the Jupyter file browser.
 
-⚠ Do not run `make` locally on your computer! ⚠ 
-
-It will produce side effects on your global git configuration (because it will run the scripts from the git chapter)!
-Instead, follow the instructions below.
+> [!CAUTION]
+> Do not run `make` locally on your computer!
+> It will produce side effects on your global git configuration (because it will run the scripts from the git chapter)!
+> Instead, follow the instructions below.
 
 ## Testing it locally
 
