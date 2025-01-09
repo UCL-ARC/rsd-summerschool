@@ -147,7 +147,7 @@ default: $(PDFS)
 # Sometimes you end up creating various files that you do not want to include in version control. An easy way of deleting them (if that is what you want) is the `git clean` command, which will remove the files that git is not tracking.
 
 # %% jupyter={"outputs_hidden": false} language="bash"
-# git clean -fX
+# git clean -f
 
 # %% jupyter={"outputs_hidden": false} language="bash"
 # ls
