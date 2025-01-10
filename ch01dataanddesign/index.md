@@ -10,3 +10,4 @@ title: Research Data and Design Patterns
 * Refactoring
 * Object Orientation
 * Design Patterns
+* Static Typing

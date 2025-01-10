@@ -217,20 +217,6 @@ Mock() - Mock()
 # finding silent bugs, dead code, and unreachable statements, which is often missed
 # during unit and integration testing.
 # 
-# ### Static type checkers
-# 
-# * [mypy](https://mypy.readthedocs.io/en/stable/): a static type checker for Python
-# * [pytype](https://google.github.io/pytype/): checks and infers types for Python code - without requiring type annotations
-# * [pyright](https://microsoft.github.io/pyright/): a full-featured, standards-compliant static type checker for Python
-# * [pyre](https://pyre-check.org): a performant type-checker for Python 3
-# 
-# Mypy is one of the oldest open-sourced and the most widely used static type
-# checker for Python code. The tool is also recommended by Scientific Python,
-# so our examples below will use mypy, but feel free to experiment with the
-# other tools as well. Additionally, ,ost of the IDEs either provide integration
-# support for the static typing tools listed above or offer their own solutions for
-# checking static types.
-# 
 # ### Detecting dead code
 # 
 # For example, let's consider the following piece of code:

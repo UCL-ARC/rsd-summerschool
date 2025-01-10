@@ -247,7 +247,7 @@ viewport = pi/4
 if hawk.can_see(starling):
     hawk.hunt(starling)
 
-class Hawk(object):
+class Hawk:
     def can_see(self, target):
         return (self.facing - target.facing) < viewport
 
@@ -260,7 +260,7 @@ viewport = pi/4
 if hawk.can_see(starling, viewport):
     hawk.hunt(starling)
 
-class Hawk(object):
+class Hawk:
     def can_see(self, target, viewport):
         return (self.facing - target.facing) < viewport
 
@@ -333,10 +333,10 @@ def predate(predator, prey):
 # Before:
 
 # %%
-class One(object):
+class One:
     pass
 
-class Two(object):
+class Two:
     def __init__():
         self.child = One()
 
@@ -346,13 +346,13 @@ class Two(object):
 
 # %%
 # %%writefile anotherfile.py
-class One(object):
+class One:
     pass
 
 # %%
 from anotherfile import One
 
-class Two(object):
+class Two:
     def __init__():
         self.child = One()
 

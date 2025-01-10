@@ -1,4 +1,4 @@
-class MonteCarlo(object):
+class MonteCarlo:
     """ A simple Monte Carlo implementation """
     def __init__(self, temperature=100, itermax=100):
     

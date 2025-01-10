@@ -8,7 +8,7 @@ import imageio.v3 as iio
 # cells below might error out on the browser (jupyterlite) version of this notebook
 import requests
 
-class Map(object):
+class Map:
     def __init__(self, latitude, longitude, satellite=True, zoom=10,
                  sensor=False):
         base = "https://mt0.google.com/vt?"
