@@ -76,11 +76,11 @@ class Particle:
 # sending requests to the web is not fully supported on jupyterlite yet, and the
 # cells below might error out on the browser (jupyterlite) version of this notebook
 import requests
-from IPython.display import Image
+from IPython.display import SVG
 
 def yuml(model):
     result = requests.get("http://yuml.me/diagram/boring/class/" + model)
-    return Image(result.content)
+    return SVG(result.content)
 
 
 # %%
@@ -157,7 +157,7 @@ assert(Person().name == "Graham Chapman")
 # becomes:
 
 # %%
-class Person(object):
+class Person:
     def __init__(self):
         self._first = "Graham"
         self._second = "Chapman"
@@ -180,7 +180,7 @@ assert(Person().name == "Graham Chapman")
 # access data through functions:
 
 # %%
-class Person(object):
+class Person:
     def __init__(self):
         self._name = "Graham Chapman"
         
@@ -196,7 +196,7 @@ assert(Person().name() == "Graham Chapman")
 # Another way could be to create a member variable `name` which holds the full name. However, this could lead to inconsistent data. If we create a `get_married` function, then the name of the person won't change!
 
 # %%
-class Person(object):
+class Person:
     def __init__(self, first, second):
         self._first = first
         self._second = second
@@ -336,7 +336,7 @@ class Person(Animal):
 # UML shows inheritance with an open triangular arrow pointing from subclass to superclass.
 
 # %%
-yuml("[Animal]^-[Bird],[Bird]^-[Eagle],[Bird]^-[Starling]%")
+yuml("[Animal]^-[Bird],[Bird]^-[Eagle],[Bird]^-[Starling]")
 
 # %% [markdown]
 # ## Aggregation vs Inheritance
@@ -352,7 +352,7 @@ yuml("[Animal]^-[Bird],[Bird]^-[Eagle],[Bird]^-[Starling]%")
 # The Boids situation can be represented thus:
 
 # %%
-yuml("[Model]<>-*>[Boid],[Boid]position++->[Vector],[Boid]velocity++->[Vector]%")
+yuml("[Model]<>-*>[Boid],[Boid]position++->[Vector],[Boid]velocity++->[Vector]")
 
 # %% [markdown]
 # The open diamond indicates **Aggregation**, the closed diamond **composition**.
@@ -512,6 +512,11 @@ class Animal:
 # Python's Duck Typing approach means explicitly declaring these is unnesssary: any class concept which implements
 # appropriately named methods will do. These as user-defined **concepts**, just as "iterable" or "container" are 
 # built-in Python concepts. A class is said to "implement an interface" or "satisfy a concept".
+# 
+# Even with the existence of Duck Typing, there also exists "abstract base classes"
+# ([`abc.ABC`](https://docs.python.org/3/library/abc.html)) and typing
+# [`Protocols`](https://docs.python.org/3/library/typing.html#typing.Protocol) for
+# structural subtyping.
 # 
 # ## Interfaces in UML
 # 
