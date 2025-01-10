@@ -50,7 +50,7 @@
 #
 # [Breathe](https://breathe.readthedocs.io/en/latest/) can be used to make Sphinx and Doxygen work together (good to keep documentation, for example, of a C++ project that includes Python bindings). [roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) is another good option for R packages.
 # 
-# ## Example of using Sphinx
+# ## Sphinx
 # 
 # ### Write some docstrings
 # 
@@ -238,6 +238,21 @@ Simple "Hello, James" module developed to teach research software engineering.
 # 
 # Sphinx's output is [html](./greetings/doc/index.html). We just created a simple single function's documentation, but Sphinx will create
 # multiple nested pages of documentation automatically for many functions.
+# 
+# ## MkDocs
+# 
+# [MkDocs](https://www.mkdocs.org) is a static site generator that supports
+# markdown content out of the box. The configuration is specified in a YAML
+# file (`mkdocs.yml`) and it supports automatically rendering the docstrings
+# in documentation through plugins like [mkdocstrings](https://mkdocstrings.github.io).
+# 
+# mkdocstrings supports Google, NumPy, and the Sphinx docstring conventions.
+# Moreover, MkDocs allows users to write documentation quicker, faster, and in
+# an easier format than Sphinx, but Sphinx is more powerful in terms of
+# customisability. For smaller projects, MkDocs works like a charm, but bigger
+# projects such as [NumPy](https://numpy.org) and [SciPy](https://scipy.org)
+# use Sphinx (more specifically, the [PyData Sphinx theme](https://pydata-sphinx-theme.readthedocs.io))
+# for their documentation.
 # 
 # ## Doctest - testing your documentation is up to date
 # 
