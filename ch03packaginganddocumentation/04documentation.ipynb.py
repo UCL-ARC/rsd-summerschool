@@ -261,8 +261,6 @@ Simple "Hello, James" module developed to teach research software engineering.
 # Let's add an example to our greeting function and check it with `doctest`. We are leaving the output with a small typo (missing the closing quote `'`) to see what's the type of output we get from `doctest`.
 
 # %%
-
-# %%
 # %%writefile greetings/greetings/greeter.py
 def greet(personal, family, title="", polite=False):
     """ Generate a greeting string for a person.
