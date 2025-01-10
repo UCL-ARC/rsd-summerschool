@@ -22,22 +22,106 @@
 #
 # They are an easy and cheap way of making a second version of your software, which you work on in parallel,
 # and pull in your changes when you are ready.
+# 
+# ## Setting up somewhere to work
 
-# %% jupyter={"outputs_hidden": true}
+# %% attributes={"classes": [" Bash"], "id": ""} jupyter={"outputs_hidden": false} language="bash"
+# rm -rf learning_git/git_example # Just in case it's left over from a previous class; you won't need this
+# mkdir -p learning_git/git_example
+# cd learning_git/git_example
+
+# %% [markdown]
+# We need to move this Jupyter notebook's current directory as well.
+
+# %% jupyter={"outputs_hidden": false}
 import os
 top_dir = os.getcwd()
+top_dir
+
+# %% jupyter={"outputs_hidden": false}
 git_dir = os.path.join(top_dir, 'learning_git')
-working_dir = os.path.join(git_dir, 'git_example')
+git_dir
+
+# %%
+working_dir=os.path.join(git_dir, 'git_example')
+
+# %% jupyter={"outputs_hidden": false}
 os.chdir(working_dir)
+
+# %% [markdown]
+# ## Configuring Git with your name and email
+#
+# We should quickly configure Git to know our name and email address:
+
+# %% attributes={"classes": [" Bash"], "id": ""} jupyter={"outputs_hidden": false} language="bash"
+# git config --global user.name "Lancelot the Brave"
+# git config --global user.email "l.brave@spamalot.uk"
+
+# %% [markdown]
+# Additionally, it's also a good idea to define what's the name of the default branch when we create a repository:
+
+# %% language="bash"
+# git config --global init.defaultBranch main
+
+# %% [markdown]
+# Historically, the default branch was named `master`. Nowadays, the community and most of the hosting sites have changed the default ([read about this change in GitHub](https://github.com/github/renaming/) and [Gitlab](https://about.gitlab.com/blog/2021/03/10/new-git-default-branch-name/).
+
+# %% [markdown]
+# ## Initialising the repository
+#
+# Now, we will tell Git to track the content of this folder as a git "repository".
+
+# %% attributes={"classes": [" Bash"], "id": ""} jupyter={"outputs_hidden": false} language="bash"
+# pwd # Note where we are standing-- MAKE SURE YOU INITIALISE THE RIGHT FOLDER
+# git init
+
+# %% [markdown]
+# ## Adding a new remote to your repository
+
+# %% jupyter={"outputs_hidden": true} language="bash"
+# git remote add origin git@github.com:UCL/github-example.git
+
+# %% [markdown]
+# ## Working on the main branch
+# 
+# Let's quickly add, commit, and push a file to the `main` branch of our repository for comparisons later.
+
+# %% jupyter={"outputs_hidden": false}
+# %%writefile Wales.md
+Mountains In Wales
+==================
+
+* Tryfan
+* Yr Wyddfa
+
+# %% jupyter={"outputs_hidden": false} language="bash"
+# ls
+
+# %% jupyter={"outputs_hidden": false} language="bash"
+# git add Wales.md
+# git commit -m "Add wales"
+
+# %% attributes={"classes": ["Bash"], "id": ""} jupyter={"outputs_hidden": false} language="bash"
+# git push -uf origin main # You shouldn't need the extra `f` switch. We use it here to force the push and rewrite that repository.
+#       #You should copy the instructions from YOUR repository.
+
+# %% [markdown]
+# Now we can look at what branches exists and what branch we are on.
 
 # %% attributes={"classes": [" Bash"], "id": ""} jupyter={"outputs_hidden": false} language="bash"
 # git branch # Tell me what branches exist
+
+# %% [markdown]
+# And create and switch/checkout to a new branch:
 
 # %% jupyter={"outputs_hidden": false} language="bash"
 # git switch -c experiment # Make a new branch (use instead `checkout -b` if you have a version of git older than 2.23)
 
 # %% jupyter={"outputs_hidden": false} language="bash"
 # git branch
+
+# %% [markdown]
+# Let's overwrite, add, and commit Wales.md on our new branch.
 
 # %%
 # %%writefile Wales.md
@@ -55,6 +139,9 @@ Mountains In Wales
 # git add Wales.md
 # git commit -m "Add Cadair Idris"
 
+# %% [markdown]
+# And compare the file on `main` and `experiment`.
+
 # %% attributes={"classes": [" Bash"], "id": ""} jupyter={"outputs_hidden": false} language="bash"
 # git switch main # Switch to an existing branch (use `checkout` if you are using git older than 2.23)
 
@@ -66,6 +153,9 @@ Mountains In Wales
 
 # %% jupyter={"outputs_hidden": false}
 # cat Wales.md
+
+# %% [markdown]
+# The file exists in 2 different branches with different content!
 
 # %% [markdown]
 # ## Publishing branches
