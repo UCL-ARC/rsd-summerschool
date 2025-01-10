@@ -110,8 +110,13 @@ with h5py.File('my_file.hdf5', 'r') as hdf_file:
 # 
 # ## Other formats
 #
-# HDF5 is used across various scientific fields to store data, but some disciplines tend to use other file formats. Examples of such formats (and the python libraries) that are popular in particular disciplines are [DICOM](https://en.wikipedia.org/wiki/DICOM) ([`pydicom`](https://pydicom.github.io/pydicom/stable/)) for medical imaging, [FITS](https://en.wikipedia.org/wiki/FITS) ([`astropy.io.fits`](http://docs.astropy.org/en/stable/io/fits/)) in astronomy, and [NetCDF](https://en.wikipedia.org/wiki/NetCDF) ([`netCDF4`](https://unidata.github.io/netcdf4-python/netCDF4/index.html)) in the geosciences.
-#
+# HDF5 is used across various scientific fields to store data, but some disciplines tend to use other file formats. Examples of such formats (and the python libraries) that are popular in particular disciplines are:
+# - [DICOM](https://en.wikipedia.org/wiki/DICOM) ([`pydicom`](https://pydicom.github.io/pydicom/stable/)) for medical imaging
+# - [FITS](https://en.wikipedia.org/wiki/FITS) ([`astropy.io.fits`](http://docs.astropy.org/en/stable/io/fits/), [`fitsio`](https://github.com/esheldon/fitsio)) in astronomy
+# - [Zarr](https://en.wikipedia.org/wiki/Zarr_(data_format)) ([`zarr`](https://zarr.readthedocs.io/en/stable/)) for microscopy and geospatial data
+# - [ROOT](https://en.wikipedia.org/wiki/ROOT) ([`ROOT`](https://root.cern), [`uproot`](https://uproot.readthedocs.io/en/latest/), [`UnROOT.jl`](https://juliahep.github.io/UnROOT.jl/stable/)) for particle physics
+# - [FASTA](https://en.wikipedia.org/wiki/FASTA_format) ([Biopython](https://biopython.org/docs/latest/index.html)) for nucleotide sequences in bioinformatics
+# 
 # The overall points that we have made about HDF5 generally apply to these formats as well. They are binary files which require specific applications, but you can also use various libraries to interact with them programmatically. Some libraries even offer support for multiple related types of files, such as different image formats.
 #
 # If you often need to work with a particular type of files, try finding a relevant library in your chosen language. If you have not used it before, are you able to read or write a file using it?
