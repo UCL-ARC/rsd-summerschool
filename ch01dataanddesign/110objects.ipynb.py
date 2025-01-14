@@ -20,7 +20,6 @@
 # %%
 from context import *
 
-
 # %% [markdown]
 #
 # ## Object-Oriented Design
@@ -58,7 +57,6 @@ class Person:
 terry = Person("Terry", 76)
 terry.home = "Colwyn Bay"
 
-
 # %% [markdown]
 # Notice, that in Python, you can add properties to an object once it's been defined. Just because you can doesn't mean you should!
 # 
@@ -72,8 +70,7 @@ class MyClass:
 
 # %% [markdown]
 # ### Object instances
-
-# %% [markdown]
+# 
 # Instance: A particular object *instantiated* from a class.
 
 # %%
@@ -133,7 +130,6 @@ birds = [{"position": random(),
           "type": kind} for kind in bird_types]
 
 average_position = average([bird["position"] for bird in birds])
-
 
 # %% [markdown]
 # After:

@@ -171,7 +171,6 @@ plt.plot(abs(clean_spectrum.real))
 plt.title("Fourier Coefficients")
 plt.xlabel("Real coefficients")
 
-
 # %% [markdown]
 # #### Years are not constant length
 # 
@@ -204,8 +203,7 @@ plt.xlabel("Real coefficients")
 # * This design doesn't fit with a clean Ontology of "kinds of things": there's no Abstract Base for spectrogram generators...
 # 
 # #### Apply the strategy pattern
-
-# %% [markdown]
+# 
 # * We implement each algorithm for generating a spectrum as its own Strategy class.
 # * They all implement a common interface
 # * Arguments to strategy constructor specify parameters of algorithms, such as spline degree
@@ -230,7 +228,6 @@ class Series:
         self.values = self.data[:, 1].copy()
         self.plot_data = [self.times, self.values]
         self.inverse_plot_data = [1 / self.times[20:], self.values[20:]]
-
 
 # %% [markdown]
 # Then, our analysis class which contains all methods *except* the numerical methods
@@ -367,8 +364,7 @@ yuml("[Product]^-[ConcreteProduct], "
 # This is all very abstract, so let's get a clearer idea of what that means with an example.
 # 
 # ### Initial Example
-
-# %% [markdown]
+# 
 # We have created code that can analyse imaging data from different types of instrument.
 # However we still want to be able to interact with the imaging data in the same way,
 # independent of how each instrument stores its data.
@@ -429,6 +425,10 @@ class GenericImage:
             0, normalised_data.max())
         return normalised_data
 
+# %% [markdown]
+# #### Data classes
+# 
+# 
 # %% [markdown]
 # #### Implemented classes
 #
