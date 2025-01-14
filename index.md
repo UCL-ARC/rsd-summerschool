@@ -57,6 +57,7 @@ TODO
 <li>Other Scientific Data Formats</li>
 <li>Refactoring</li>
 <li>Static Typing</li>
+<li>Data Classes and Validation</li>
 <li>Object Orientation</li>
 <li>Design Patterns</li>
 </ul>

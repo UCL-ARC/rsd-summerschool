@@ -16,6 +16,7 @@ In this summer school, you will move beyond programming, to learn how to constru
 <li>Rebasing and Merging</li>
 <li>Debugging with GitBisect</li>
 <li>Forks, Pull Requests and the GitHub Flow</li>
+<li>Virtual Environments</li>
 </ul>
    </td>
    <td>
@@ -27,6 +28,7 @@ In this summer school, you will move beyond programming, to learn how to constru
 <li>Other Scientific Data Formats</li>
 <li>Refactoring</li>
 <li>Static Typing</li>
+<li>Data Classes and Validation</li>
 <li>Object Orientation</li>
 <li>Design Patterns</li>
 </ul>
