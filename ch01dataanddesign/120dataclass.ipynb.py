@@ -16,7 +16,7 @@
 # 
 # ## Data Classes
 # 
-# ## dataclasses
+# ### dataclasses
 # 
 # Python 3.7 introduced the [@dataclass](https://docs.python.org/3/library/dataclasses.html) decorator to write
 # classes meant to hold data with ease and minimal repetition. Consider the following
@@ -68,7 +68,7 @@ class Person:
     name: str
 
 # %% [markdown]
-# That's it! Data classes rely heavily on static types. Let us try creating the bjects and using the methods.
+# That's it! Data classes rely heavily on static types. Let us try creating the objects and using the methods.
 
 # %%
 p1 = Person(7, 1, 2002, "Saransh")
@@ -97,7 +97,7 @@ class Person:
     name: str = "John Doe"
 
 # %% [markdown]
-# To have more flexibility, one can use the `field` method and pass in arguments
+# To have more flexibility, one can use the `field` function and pass in arguments
 # such as `default` (default value), `repr` (whether to include in repr),
 # `init` (whether to include in init), `compare` (whether to include in eq), etc.
 
@@ -112,12 +112,8 @@ class Person:
     name: str = field(default="John Doe")
 
 # %% [markdown]
-# To have more flexibility, one can use the `field` method and pass in arguments
-# such as `default` (default value), `repr` (whether to include in repr),
-# `init` (whether to include in init), `compare` (whether to include in eq), etc.
-# 
 # We can extend out example to include a `People` class that takes in a `list`
-# of `Person`s and have the same basic methods.
+# of `Person`s and has the same basic dunder methods.
 
 # %%
 from typing import List
@@ -145,7 +141,7 @@ append_to_list(1)
 
 # %% [markdown]
 # The error can be fixed by using the `default_factory` parameter
-# of the `fields` method.
+# of the `fields` function.
 
 # %%
 @dataclass
@@ -249,6 +245,7 @@ class Person(BaseModel):
     name: str = Field("John Doe")
     
     @field_validator("name")
+    @classmethod
     def validate_name(cls, v: str) -> str:
         if " " not in v:
             raise ValueError("the name must have first and last names separated by <space>")
@@ -290,9 +287,9 @@ class Person(BaseModel):
         return v
 
 # %% [markdown]
-# Pydantic has a ton of other features and functionalities that makes data processing
+# Pydantic has a ton of other features and functionalities that make data processing
 # for every domain easy and simple. Overall, static typing facilitates data classes
 # and pydantic validations. Several libraries build on top of pydantic to provide
 # domain specific validation tools. For example [BPX](https://github.com/FaradayInstitution/BPX)
-# implements of the Battery Parameter eXchange (BPX) schema in Pydantic with validation
-# parser, and JSON serialization.
+# implements the Battery Parameter eXchange (BPX) schema in Pydantic with validation
+# parsing, and JSON serialization capabilities.
