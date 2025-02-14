@@ -16,6 +16,7 @@ In this summer school, you will move beyond programming, to learn how to constru
 <li>Rebasing and Merging</li>
 <li>Debugging with GitBisect</li>
 <li>Forks, Pull Requests and the GitHub Flow</li>
+<li>Virtual Environments</li>
 </ul>
    </td>
    <td>
@@ -26,6 +27,8 @@ In this summer school, you will move beyond programming, to learn how to constru
 <li>JSON and YAML</li>
 <li>Other Scientific Data Formats</li>
 <li>Refactoring</li>
+<li>Static Typing</li>
+<li>Data Classes and Validation</li>
 <li>Object Orientation</li>
 <li>Design Patterns</li>
 </ul>
@@ -74,7 +77,7 @@ In this summer school, you will move beyond programming, to learn how to constru
 * You need to be competent in at least one programming language, including concepts like variables, control flow, and functions. This could be through a formal course, a shorter workshop like Software Carpentry, or previous experiences.
 
 * You need to be familiar with the basics of Git and GitHub. A good resource for attendees who are not familiar with Git and GitHub -
-  * First 8 chapters of ["Version Control with Git by Software Carpentry"](https://swcarpentry.github.io/git-novice/)
+  * First 8 chapters of [Version Control with Git by Software Carpentry](https://swcarpentry.github.io/git-novice/)
 
 * You need to be familiar with the foundational libraries of PyData and Scientific Python ecosystem. A good resource for attendees who are not familiar with the Scientific Python ecosystem -
    * [Scientific Python Lectures](https://lectures.scientific-python.org)
@@ -85,7 +88,7 @@ In this summer school, you will move beyond programming, to learn how to constru
       * [1.4. Matplotlib: plotting](https://lectures.scientific-python.org/intro/matplotlib/index.html)
       * [1.6. Getting help and finding documentation](https://lectures.scientific-python.org/intro/help/help.html)
    
-   If curious, one can also go through the remaining of the [1.3. NumPy: creating and manipulating numerical data](https://lectures.scientific-python.org/intro/numpy/index.html) section and [1.5. SciPy : high-level scientific computing](https://lectures.scientific-python.org/intro/scipy/index.html).
+   If curious, one can also go through the remaining of the [1.3. NumPy: creating and manipulating numerical data](https://lectures.scientific-python.org/intro/numpy/index.html) section and [1.5. SciPy: high-level scientific computing](https://lectures.scientific-python.org/intro/scipy/index.html).
 * You are required to bring your own laptop. We have also provided setup instructions for you to install the software needed for the course on your computer.
 
 # Contributing to this repository

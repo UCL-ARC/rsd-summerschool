@@ -251,7 +251,7 @@ Counted.howMany()  # 6
 # 
 # ## Inheritance and Polymorphism
 # 
-# ## Object-based vs Object-Oriented
+# ### Object-based vs Object-Oriented
 # 
 # So far we have seen only object-based programming, not object-oriented programming.
 #
@@ -259,12 +259,12 @@ Counted.howMany()  # 6
 #
 # To understand object-oriented programming, we need to introduce **polymorphism** and **inheritance**.
 #
-# ## Inheritance
+# ### Inheritance
 #
 # * Inheritance is a mechanism that allows related classes to share code.
 # * Inheritance allows a program to reflect the *[ontology](https://en.wikipedia.org/wiki/Ontology_(information_science))* of kinds of thing in a program.
 #
-# ## Ontology and inheritance
+# #### Ontology and inheritance
 # 
 # * A bird is a kind of animal
 # * An eagle is a kind of bird
@@ -274,7 +274,7 @@ Counted.howMany()  # 6
 # * Only eagles hunt
 # * Only starlings flock
 #
-# ## Inheritance in python
+# #### Inheritance in Python
 
 # %%
 class Animal:
@@ -299,7 +299,7 @@ Eagle().beBorn()
 Eagle().hunt()
 
 # %% [markdown]
-# ## Inheritance terminology
+# #### Inheritance terminology
 # 
 # Here are two equivalents definition, one coming from C++ and another from Java:
 # * A *derived class* _derives_ from a *base class*.
@@ -314,7 +314,7 @@ Eagle().hunt()
 # Another equivalent definition is using the synonym *child* / *parent* for *derived* / *base* class:
 # * A *child class* extends a *parent class*.
 # 
-# ## Inheritance and constructors
+# #### Inheritance and constructors
 # 
 # To use implicitly constructors from a *superclass*, we can use `super` as shown below.
 
@@ -331,7 +331,7 @@ class Person(Animal):
 # %% [markdown]
 # Read [Raymond Hettinger](https://twitter.com/raymondh)'s [article about `super`](https://rhettinger.wordpress.com/2011/05/26/super-considered-super/) to see various real examples.
 # 
-# ## Inheritance UML diagrams
+# #### Inheritance UML diagrams
 # 
 # UML shows inheritance with an open triangular arrow pointing from subclass to superclass.
 
@@ -403,7 +403,7 @@ class Pet(Animal):
         super().__init__(age)
 
 # %% [markdown]
-# ## Polymorphism
+# ### Polymorphism
 
 # %%
 class Dog:
@@ -433,7 +433,7 @@ for animal in animals:
 # then if an object is of an unknown class, calling the method will invoke the version for
 # whatever class the instance is an instance of.
 #
-# ## Polymorphism and Inheritance
+# #### Polymorphism and Inheritance
 # 
 # Often, polymorphism uses multiple derived classes with a common base class.
 # However, [duck typing](https://en.wikipedia.org/wiki/Duck_typing) in Python means that all that is required is that the 
@@ -463,7 +463,7 @@ for animal in animals:
     print(animal.noise())
 
 # %% [markdown]
-# ## Undefined Functions and Polymorphism
+# #### Undefined Functions and Polymorphism
 #
 # In the above example, we put in a dummy noise for Animals that don't know what type they are.
 #
@@ -480,7 +480,7 @@ class Worm(Animal):
 Worm().noise() # Generates error
 
 # %% [markdown]
-# ## Refactoring to Polymorphism
+# #### Refactoring to Polymorphism
 # 
 # Smell: a function uses a big set of `if` statements or a `case` statement to decide what to do:
 #
@@ -518,7 +518,7 @@ class Animal:
 # [`Protocols`](https://docs.python.org/3/library/typing.html#typing.Protocol) for
 # structural subtyping.
 # 
-# ## Interfaces in UML
+# ### Interfaces in UML
 # 
 # Interfaces implementation (a common ancestor that doesn't do anything but defines methods to share) in UML is indicated thus:
 
