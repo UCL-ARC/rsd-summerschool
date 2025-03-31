@@ -31,7 +31,13 @@ This is an intensive and a practical summer school.
 
 ## Registration
 
-TODO
+The Research Software Engineering Summer Workshop is designed for participants at any career stage that wish to improve their technical skills towards creating software that is more readable, maintainable, and reproducible.
+
+We will be using Python but the skills learnt will be applicable to any programming language.
+
+This workshop is open to UCL staff, students and external participants.
+
+[Register now or find out more via the UCL Online Store](https://onlinestore.ucl.ac.uk/conferences-and-events/professional-services-b01/centre-for-advanced-research-computing-arc-c75/c75-research-software-engineering-summer-workshop?dm_i=6T1L,15QRK,5X5TXC,5EJHA,1).
 
 ## Synopsis
 
