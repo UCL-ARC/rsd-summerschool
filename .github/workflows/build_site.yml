@@ -54,7 +54,7 @@ jobs:
           sudo apt-get install python3-pydot graphviz
           python -m pip install -r .github/python/requirements.txt
       - name: Building notes
-        run: make ready -j8
+        run: make ready
       - name: setup directories
         run: |
           mkdir contents
