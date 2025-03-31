@@ -36,3 +36,4 @@ jupyterlab
 notebook
 jupyterlite-pyodide-kernel
 pydantic
+pyarrow
