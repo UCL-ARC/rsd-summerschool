@@ -8,11 +8,7 @@ Windows
 Python
 ------
 
-We recommend installing a complete scientific python distribution. One of these is
-[Anaconda](https://www.anaconda.com/distribution/).
-
-Please download and install [Anaconda](https://www.anaconda.com/download/)
-(Python 3.7 version).
+We recommend installing a Python from the [official website](https://www.python.org/downloads/).
 
 Sophos
 ------
