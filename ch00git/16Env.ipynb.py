@@ -50,4 +50,11 @@
 #   - [Cargo](https://doc.rust-lang.org/cargo/): the Rust package manager
 # 
 # 
-# TODO: Decide on which env management tool to use
+# We will go through `venv`, `uv`, and `conda` in this course. Further we will have a short
+# demonstration of `docker` and also briefly introduce a few other tools.
+# 
+# The
+# [Reproducible development environment](https://carpentries-incubator.github.io/fair-research-software/05-code-environment.html)
+# epsiode in Software Carpentries'
+# [Tools and good software practices for open and reproducible research](https://carpentries-incubator.github.io/fair-research-software/)
+# lesson is a great introduction to virtual environments and `venv` for Python.
