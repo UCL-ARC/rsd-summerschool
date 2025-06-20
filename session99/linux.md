@@ -35,34 +35,6 @@ Older distributions may have outdated versions of specific packages.
 Other linux distributions most likely also contain the needed python packages but again
 they may also be outdated.
 
-Python via Anaconda
------------------------
-
-We recommend you use [Anaconda](https://anaconda.org/), a complete independent scientific python distribution.
-
-Download [Anaconda for linux](https://www.anaconda.com/download/#linux) with your web browser, choose
-the python 3.7 version.  Open a terminal window, go to the place where the file was downloaded  and type:
-
-```bash
-bash Anaconda3-
-```
-
-and then press tab. The name of the file you just downloaded should appear.
-
-Press enter. You will follow the text-only prompts. To move through the text,
-press the space key. Type `yes` and press enter to approve the license. Press
-enter to approve the default location for the files. Type yes and press
-enter to prepend Anaconda to your PATH (this makes the Anaconda distribution
-the default Python).
-
-You can test the installation by opening a new terminal and checking that:
-
-```bash
-which python
-```
-
-shows a path where you installed anaconda.
-
 Git
 ---
 
