@@ -67,14 +67,6 @@ installing homebrew.
 
 ## Python
 
-
-We recommend installing a complete scientific python distribution. One of these is
-[Anaconda](https://anaconda.org/).
-
-Please download and install [Anaconda](https://www.anaconda.com/download/)
-(Python 3.7 version).
-
-
 ### Python from Homebrew
 
 Alternatively if you wish to install python manually you can use Homebrew.
