@@ -205,14 +205,15 @@ Mountains In Wales
 # So in a purely linear sequence, it does what you'd expect.
 
 # %% jupyter={"outputs_hidden": false} language="bash"
-# git log --graph --oneline HEAD~9..HEAD~5
+# git log HEAD~2..HEAD~1 --graph --oneline
 
 # %% [markdown]
-# But in cases where a history has branches,
+# The command errors out as we have only one commit.
+# In cases where a history has branches,
 # the definition in terms of ancestors is important.
 
 # %% jupyter={"outputs_hidden": false} language="bash"
-# git log --graph --oneline HEAD~5..HEAD
+# git log --graph --oneline
 
 # %% [markdown]
 # If there are changes on both sides, like this:
@@ -257,7 +258,7 @@ Mountains In Scotland
 # git merge experiment
 
 # %% jupyter={"outputs_hidden": false} language="bash"
-# git log --graph --oneline HEAD~3..HEAD
+# git log --graph --oneline HEAD~2..HEAD
 
 # %% [markdown]
 # ## Cleaning up after a branch
