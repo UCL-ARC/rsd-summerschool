@@ -37,3 +37,4 @@ notebook
 jupyterlite-pyodide-kernel
 pydantic
 pyarrow
+mypy
