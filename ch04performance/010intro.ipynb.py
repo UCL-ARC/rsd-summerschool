@@ -8,25 +8,25 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.15.2
+#       jupytext_version: 1.17.2
 # ---
 
 # %% [markdown]
 # # Performance programming
-# 
+#
 # We've spent most of this course looking at how to make code readable and reliable. For research work, it is often also important that code is efficient: that it does what it needs to do *quickly*.
-# 
+#
 # It is very hard to work out beforehand whether code will be efficient or not: it is essential to *Profile* code, to measure its performance, to determine what aspects of it are slow.
-# 
+#
 # When we looked at Functional programming, we claimed that code which is conceptualised in terms of actions on whole data-sets rather than individual elements is more efficient. Let's measure the performance of some different ways of implementing some code and see how they perform.
-# 
+#
 # ## Two Mandelbrots
-# 
-# You're probably familiar with a famous fractal called the [Mandelbrot Set](https://www.youtube.com/watch?v=ZDU40eUcTj0).
-# 
+#
+# You might be familiar with a famous fractal called the [Mandelbrot Set](https://www.youtube.com/watch?v=ZDU40eUcTj0).
+#
 # For a complex number $c$, $c$ is in the Mandelbrot set if the series $z_{i+1}=z_{i}^2+c$ (With $z_0=c$) stays close to $0$.
 # Traditionally, we plot a color showing how many steps are needed for $\left|z_i\right|>2$, whereupon we are sure the series will diverge.
-# 
+#
 # Here's a trivial python implementation:
 
 # %%
@@ -55,16 +55,16 @@ xs = [(xmin + (xmax - xmin) * i / resolution) for i in range(resolution)]
 ys = [(ymin + (ymax - ymin) * i / resolution) for i in range(resolution)]
 
 # %%
-# %%timeit
-data = [[mandel1(complex(x, y)) for x in xs] for y in ys]
-
-# %%
 data1 = [[mandel1(complex(x, y)) for x in xs] for y in ys]
 
 # %%
 # %matplotlib inline
 import matplotlib.pyplot as plt
 plt.imshow(data1, interpolation='none')
+
+# %%
+# %%timeit
+data = [[mandel1(complex(x, y)) for x in xs] for y in ys]
 
 # %% [markdown]
 # We will learn this lesson how to make a version of this code which works Ten Times faster:
@@ -107,3 +107,5 @@ data_numpy = mandel_numpy(values)
 
 # %%
 sum(sum(abs(data_numpy - data1)))
+
+# %%
